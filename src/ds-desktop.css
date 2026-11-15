@@ -1,0 +1,1426 @@
+/* =====================================================================================
+   ZAIN DESIGN SYSTEM 2.0 — DESKTOP (min-width:1150px) — Refinement Round 02 · STRICT
+   Source: Figma "ZainKW Design System" (Ywis5XnuybBNjAt38NCbh2), read 2026-11-05:
+     variables  Primitives + Semantic (Light/Dark) · text styles · effect styles
+     components Button, Icon Button, Link/Web, Segmented Tab, Underline Tab, Tab Group,
+                Select Options (Web), _Select/Option, Search Field, Chip, Card, List Item,
+                Section Header, Breadcrumb, Inline Alert, Accordion, Divider, Toast,
+                _Overlay/Scrim, Site Footer, Brand/Zain Logo, Icon/*.
+   Every value below is a DS token or a DS component spec.
+   EXCEPTION = not in the DS; kept on purpose and listed in prototype/DS-INTEGRATION-R02.md.
+   Mobile/tablet (<1150px) are frozen at V1 and untouched by this block.
+   ===================================================================================== */
+@font-face{font-family:"Zain";src:url("assets/fonts/Zain_Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Zain";src:url("assets/fonts/Zain_Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+.logo .logo-img,.ds-only,.dsp{display:none}
+
+@media (min-width:1150px){
+:root{
+  /* ---------- Primitives (VERIFIED) ---------- */
+  --p-pink-50:#F8E5F2;--p-pink-100:#EFBEE0;--p-pink-200:#E895CB;--p-pink-300:#E46BB5;--p-pink-400:#E24BA3;--p-pink-500:#E32C8F;--p-pink-600:#D12B8A;--p-pink-700:#BA2A80;--p-pink-800:#A32878;--p-pink-900:#7C246A;
+  --p-grey-0:#FFFFFF;--p-grey-50:#FAFAFA;--p-grey-100:#F5F5F5;--p-grey-200:#E5E5E5;--p-grey-300:#D4D4D4;--p-grey-400:#A3A3A3;--p-grey-500:#737373;--p-grey-600:#525252;--p-grey-700:#404040;--p-grey-800:#262626;--p-grey-900:#171717;
+  --p-white:#FFFFFF;--p-black:#000000;--p-teal:#01A6B6;--p-lime:#C8DA37;
+  --p-blue-50:#F0F9FF;--p-blue-200:#BAE6FD;--p-blue-300:#7DD3FC;--p-blue-700:#0369A1;--p-blue-900:#0C4A6E;
+  /* ---------- Semantic · Light (VERIFIED) ---------- */
+  --surface-page:var(--p-grey-0);--surface-default:var(--p-grey-0);--surface-subtle:var(--p-grey-50);--surface-muted:var(--p-grey-100);--surface-emphasis:var(--p-grey-200);--surface-inverse:var(--p-grey-900);--surface-overlay:var(--p-grey-900);
+  --text-primary:var(--p-grey-900);--text-secondary:var(--p-grey-600);--text-tertiary:var(--p-grey-500);--text-disabled:var(--p-grey-400);--text-inverse:var(--p-grey-0);
+  --text-brand:var(--p-pink-600);--text-link:var(--p-pink-600);--text-link-hover:var(--p-grey-900);--text-link-pressed:var(--p-pink-900);--text-on-brand:var(--p-white);--text-on-gradient:var(--p-grey-900);
+  --border-default:var(--p-grey-200);--border-subtle:var(--p-grey-100);--border-strong:var(--p-grey-400);--border-control:var(--p-grey-500);--border-brand:var(--p-pink-500);--border-focus:var(--p-pink-500);
+  --action-primary:var(--p-pink-600);--action-primary-hover:var(--p-pink-700);--action-primary-pressed:var(--p-pink-800);--action-primary-disabled:var(--p-grey-200);
+  --action-secondary:var(--p-grey-0);--action-secondary-hover:var(--p-grey-50);--action-secondary-pressed:var(--p-grey-50);
+  --action-neutral:var(--p-grey-0);--action-neutral-hover:var(--p-grey-50);--action-neutral-pressed:var(--p-grey-100);
+  --icon-default:var(--p-grey-900);--icon-secondary:var(--p-grey-500);--icon-brand:var(--p-pink-600);--icon-on-brand:var(--p-white);
+  --status-info-surface:var(--p-blue-50);--status-info-border:var(--p-blue-200);--status-info-text:var(--p-blue-700);
+  --gradient-start:var(--p-teal);--gradient-end:var(--p-lime);--gradient-pink-start:var(--p-pink-600);--gradient-pink-end:var(--p-pink-900);
+  /* ---------- Effects (VERIFIED) ---------- */
+  --elevation-1:0 1px 2px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.06);
+  --elevation-2:0 2px 4px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.08);
+  --elevation-3:0 4px 8px rgba(0,0,0,.08),0 12px 24px rgba(0,0,0,.10);
+  --focus-ring:0 0 0 2px var(--p-white),0 0 0 4px var(--p-pink-500);
+  /* ---------- Space · Radius · Stroke · Layout (VERIFIED) ---------- */
+  --space-xs:4px;--space-sm:8px;--space-md:12px;--space-lg:16px;--space-xl:24px;--space-2xl:32px;
+  --spacing-40:40px;--spacing-48:48px;--spacing-64:64px;
+  --radius-selection:4px;--radius-chip:8px;--radius-control:12px;--radius-card:16px;--radius-sheet:24px;--radius-pill:999px;
+  --stroke-hairline:.5px;--stroke-default:1px;--stroke-emphasis:2px;
+  --layout-content-max:1360px;--layout-desktop-margin:80px;--layout-screen-margin:16px;--layout-grid-gutter:16px;
+  /* ---------- Typography (VERIFIED text styles; "Zain" for EN + AR) ---------- */
+  --f:"Zain","Segoe UI","Geeza Pro",system-ui,sans-serif;
+  --t-display-xl:700 64px/72px var(--f);--t-display-l:700 48px/56px var(--f);--t-display:700 32px/38px var(--f);
+  --t-h1:700 28px/34px var(--f);--t-h2:700 24px/30px var(--f);--t-h3:700 20px/26px var(--f);--t-h4:700 18px/24px var(--f);--t-subtitle:700 16px/22px var(--f);
+  --t-body-l:400 16px/24px var(--f);--t-body-m:400 14px/21px var(--f);--t-body-s:400 12px/18px var(--f);
+  --t-label:700 14px/20px var(--f);--t-button:700 16px/20px var(--f);--t-caption:400 12px/16px var(--f);--t-overline:700 10px/14px var(--f);
+  /* ---------- Component specs (VERIFIED from DS components) ---------- */
+  --btn-h-l:48px;--btn-h-m:40px;--btn-h-s:32px;          /* Button / Icon Button sizes */
+  --tab-h:48px;                                           /* Underline Tab */
+  --option-h:48px;                                        /* _Select/Option */
+  --search-h:48px;                                        /* Search Field */
+  --chip-h-m:40px;--chip-h-s:32px;                        /* Chip */
+  --scrim-opacity:.5;                                     /* _Overlay/Scrim */
+  /* ---------- Layout for the navigation ---------- */
+  --mx:var(--layout-screen-margin);
+  --ctx-h:var(--spacing-40);--bar-h:var(--spacing-64);--bar-h-s:var(--spacing-64);
+  /* EXCEPTION (approved Quiet Glass): sticky bar/panels = Surface/Default with transparency + blur. DS has no glass token. */
+  --glass-bar:color-mix(in srgb,var(--surface-default) 76%,transparent);
+  --glass-panel:color-mix(in srgb,var(--surface-default) 92%,transparent);
+}
+@media (min-width:1280px){:root{--mx:var(--space-2xl)}}
+@media (min-width:1440px){:root{--mx:var(--layout-desktop-margin)}}
+:root[data-theme="dark"]{
+  /* ---------- Semantic · Dark (VERIFIED) ---------- */
+  --surface-page:var(--p-grey-900);--surface-default:var(--p-grey-800);--surface-subtle:var(--p-grey-800);--surface-muted:var(--p-grey-700);--surface-emphasis:var(--p-grey-700);--surface-inverse:var(--p-grey-0);--surface-overlay:var(--p-black);
+  --text-primary:var(--p-grey-0);--text-secondary:var(--p-grey-300);--text-tertiary:var(--p-grey-400);--text-disabled:var(--p-grey-500);--text-inverse:var(--p-grey-900);
+  --text-brand:var(--p-pink-300);--text-link:var(--p-pink-300);--text-link-hover:var(--p-grey-0);--text-link-pressed:var(--p-pink-100);
+  --border-default:var(--p-grey-700);--border-subtle:var(--p-grey-800);--border-strong:var(--p-grey-500);--border-control:var(--p-grey-400);--border-brand:var(--p-pink-400);--border-focus:var(--p-pink-300);
+  --action-primary-disabled:var(--p-grey-700);
+  --action-secondary:var(--p-grey-800);--action-secondary-hover:var(--p-grey-900);--action-secondary-pressed:var(--p-black);
+  --action-neutral:var(--p-grey-800);--action-neutral-hover:var(--p-grey-700);--action-neutral-pressed:var(--p-grey-600);
+  --icon-default:var(--p-grey-0);--icon-secondary:var(--p-grey-400);--icon-brand:var(--p-pink-300);
+  --status-info-surface:var(--p-blue-900);--status-info-border:var(--p-blue-700);--status-info-text:var(--p-blue-300);
+  --focus-ring:0 0 0 2px var(--p-grey-900),0 0 0 4px var(--p-pink-300);
+}
+:root[data-theme="dark"][data-dark="aubergine"]{
+  /* EXCEPTION (prototype comparison only, not DS): V1 aubergine surfaces */
+  --surface-page:#0F0A14;--surface-default:#150D1C;--surface-subtle:#150D1C;--surface-muted:#22172D;--action-neutral-hover:#1F1529;--action-neutral-pressed:#2A1E36;
+}
+/* map DS semantic tokens onto the prototype's internal names */
+:root[data-theme]{
+  --page:var(--surface-page);--s:var(--surface-default);--s2:var(--action-neutral-hover);--s3:var(--surface-muted);--glass:var(--glass-bar);
+  --ink:var(--text-primary);--ink2:var(--text-secondary);--ink3:var(--text-tertiary);--line:var(--border-default);--line2:var(--border-control);
+  --acc:var(--text-brand);--accbg:var(--surface-muted);--accfill:var(--action-primary);--onacc:var(--text-on-brand);--focus:var(--border-focus);
+  --curtain:color-mix(in srgb,var(--surface-overlay) 50%,transparent);--card:var(--surface-default);--skel:var(--surface-muted);
+  --shadow:var(--elevation-2);--shadow-s:var(--elevation-2);--sig:linear-gradient(90deg,var(--gradient-pink-start),var(--gradient-pink-end));
+}
+.ds-only{display:revert}
+.v1-only{display:none!important}
+body{font:var(--t-body-l)}
+:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+/* ============ Layout ============ */
+.zh-ctx .in,.zh-in,.mm-in,.dsp .wrap{max-width:calc(var(--layout-content-max) + 2 * var(--mx));padding-inline:var(--mx);margin-inline:auto}
+.zh-in{gap:var(--space-xl)}
+
+/* ============ Logo (Brand/Zain Logo: Black on light, White on dark) ============ */
+.logo{gap:0;align-items:center;margin-inline-end:var(--space-sm)}
+.logo .logo-txt{display:none}
+.logo .logo-img{display:block;width:120px;height:auto}
+.logo .lw{display:none}
+:root[data-theme="dark"] .logo .lk{display:none}
+:root[data-theme="dark"] .logo .lw{display:block}
+
+/* ============ Context row ============ */
+.zh-ctx{font:var(--t-body-m);color:var(--text-primary);background:var(--surface-default);border-bottom:var(--stroke-default) solid var(--border-default)}
+.zh-ctx .in{gap:var(--space-xs)}
+/* Tertiary · Small buttons */
+.zh-ctx a,.zh-ctx .cbtn{display:inline-flex;align-items:center;gap:var(--space-xs);height:var(--btn-h-s);padding:0 var(--space-md);border-radius:var(--radius-control);font:var(--t-label);color:var(--text-primary);background:transparent;transition:background-color .15s}
+.zh-ctx a:hover,.zh-ctx .cbtn:hover{background:var(--action-neutral-hover);color:var(--text-primary)}
+.zh-ctx a:active,.zh-ctx .cbtn:active{background:var(--action-neutral-pressed)}
+.zh-ctx .ic{width:20px;height:20px}
+.zh-ctx .lang{font:var(--t-label)}
+/* Tab Group · Segmented */
+.seg{background:var(--surface-subtle);border-radius:var(--radius-pill);padding:var(--space-xs);gap:0;box-shadow:none} /* Tab Group · Segmented: fill only, no stroke (per DS) */
+.seg button{font:var(--t-label);color:var(--text-primary);padding:5px var(--space-lg);border-radius:var(--radius-pill);box-shadow:none;transition:background-color .15s,color .15s}
+.seg button:hover{background:var(--action-neutral-pressed)}
+.seg button[aria-pressed="true"],:root[data-theme="dark"] .seg button[aria-pressed="true"]{background:var(--action-primary);color:var(--text-on-brand);box-shadow:none}
+
+/* ============ Main bar ============ */
+.zh-bar{background:var(--surface-default)}
+/* Underline Tab */
+.zh-t{font:var(--t-button);height:var(--tab-h);padding:0 var(--space-lg);border-radius:0;color:var(--text-secondary);background:transparent;transition:background-color .15s,color .15s}
+.zh-t:hover{background:var(--action-neutral-hover);color:var(--text-secondary)}
+.zh-t[aria-expanded="true"],.zh-t[aria-expanded="true"]:hover{color:var(--text-primary)}
+.zh-t::after{inset-inline:0;bottom:0;height:var(--stroke-emphasis);border-radius:0;background:var(--border-brand)}
+.zh-t .dot{width:var(--space-sm);height:var(--space-sm);background:var(--action-primary)}
+/* Icon Button · Tertiary · Medium */
+.ib{width:var(--btn-h-m);height:var(--btn-h-m);border-radius:var(--radius-control);color:var(--icon-default);background:transparent;transition:background-color .15s}
+.ib:hover{background:var(--action-neutral-hover)} .ib:active,.ib[aria-expanded="true"]{background:var(--action-neutral-pressed)}
+.ib .ic{width:24px;height:24px}
+.zh-act{gap:var(--space-sm)}
+/* Button · Secondary · Medium (Quick Pay) */
+.qp{display:inline-flex;align-items:center;gap:var(--space-sm);height:var(--btn-h-m);padding:0 var(--space-lg);border-radius:var(--radius-control);font:var(--t-button);background:var(--action-secondary);color:var(--text-brand);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-brand);transition:background-color .15s}
+.qp:hover{background:var(--action-secondary-hover)}
+.qp:active{background:var(--action-secondary-pressed);box-shadow:inset 0 0 0 var(--stroke-emphasis) var(--border-brand)}
+.qp .ic{width:20px;height:20px}
+/* Button · Tertiary · Medium (Log in / account) */
+.acct,.acct.in{display:inline-flex;align-items:center;gap:var(--space-sm);width:auto;height:var(--btn-h-m);padding:0 var(--space-lg);border:0;border-radius:var(--radius-control);font:var(--t-button);color:var(--text-primary);background:transparent;transition:background-color .15s}
+.acct:hover{background:var(--action-neutral-hover)} .acct:active,.acct[aria-expanded="true"]{background:var(--action-neutral-pressed);border:0}
+.acct .ic{width:24px;height:24px}
+/* Cart count — EXCEPTION: DS has no Badge component; composed from Action/Primary + Text/On-Brand + Label */
+.badge{top:2px;inset-inline-end:2px;min-width:20px;height:20px;padding:0 var(--space-xs);border-radius:var(--radius-pill);background:var(--action-primary);color:var(--text-on-brand);font:var(--t-label);font-size:12px;line-height:20px}
+.zh-sig{height:var(--stroke-emphasis);background:var(--sig)}
+.zh[data-state="sticky"] .zh-bar{height:var(--bar-h-s);background:var(--glass);box-shadow:0 var(--stroke-default) 0 var(--border-default),var(--elevation-1)}
+.zh[data-state="sticky"] .logo .logo-img{width:120px}
+
+/* ============ Mega menu ============ */
+.zh-panels{background:var(--surface-default)}
+.zh.panel-open .zh-panels{box-shadow:var(--elevation-2);border-top:var(--stroke-default) solid var(--border-default)}
+.zh[data-state="sticky"] .zh-panels{background:var(--glass-panel)}
+.mm-in{padding-block:var(--space-2xl) var(--spacing-48);column-gap:var(--space-2xl)}
+.mcol{gap:var(--space-xl)}
+/* Section Header (title) */
+.grp h3,[dir="rtl"] .grp h3{font:var(--t-subtitle);color:var(--text-primary);letter-spacing:0;margin-bottom:var(--space-md);text-transform:none}
+.grp h3.sub{margin-top:var(--space-xl)}
+/* links: Body L · Text/Primary · hover Text/Link-Hover underline (Link/Web hover) */
+.grp a{font:var(--t-body-l);color:var(--text-primary);padding:var(--space-xs) 0;background-image:linear-gradient(var(--text-link-hover),var(--text-link-hover))}
+.grp a:hover{color:var(--text-link-hover)}
+.grp a:active{color:var(--text-link-pressed)}
+.grp li+li{margin-top:var(--space-xs)}
+.grp.big a,[dir="rtl"] .grp.big a{font:var(--t-h2);letter-spacing:0;padding:var(--space-xs) 0}
+.grp.big li+li{margin-top:var(--space-sm)}
+.grp.med a{font:var(--t-h4)}
+.grp.med ul{column-gap:var(--space-2xl)}
+.grp.more a{color:var(--text-secondary)}
+.grp .xa{color:var(--icon-secondary)}
+.grp a:focus-visible{border-radius:var(--radius-selection)}
+.feat{gap:var(--space-md)}
+/* Inline Alert · Info */
+.feat .hint{font:var(--t-body-m);color:var(--status-info-text);background:var(--status-info-surface);border-radius:var(--radius-control);padding:var(--space-md) var(--space-lg);gap:var(--space-md);box-shadow:inset 0 0 0 var(--stroke-default) var(--status-info-border)}
+.feat .hint .ic{width:20px;height:20px;color:var(--status-info-text)}
+
+/* ============ Offer · Card (Outlined, Padding 16) ============ */
+.pf{background:var(--surface-default);border-radius:var(--radius-card);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default);transition:box-shadow .15s}
+.pf:hover{transform:none;box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),var(--elevation-2)}
+.pf .art{height:140px;border-radius:var(--radius-card) var(--radius-card) 0 0}
+.pf .bd{padding:var(--space-lg);gap:var(--space-xs)}
+.pf h4{font:var(--t-h4);color:var(--text-primary)}
+.pf p{font:var(--t-body-m);color:var(--text-secondary)}
+.pf .dt{font:var(--t-body-s);color:var(--text-tertiary)}
+.pf .cta{font:var(--t-body-m);color:var(--text-link);text-decoration:underline;text-underline-offset:3px;margin-top:var(--space-sm)} /* Link/Web · Medium */
+.pf:hover .cta{color:var(--text-link-hover)}
+.pf .cta .ic{width:16px;height:16px}
+.pf .art .ic{width:40px;height:40px;color:var(--icon-on-brand)}
+.bdg,[dir="rtl"] .bdg{font:var(--t-label);letter-spacing:0;text-transform:none;padding:0;background:none}
+.bdg.fy{background:none;color:var(--text-brand)}
+/* only the two DS gradients are used for offer art */
+.art.a-plan,.art.a-device,.art.a-gift{background:linear-gradient(135deg,var(--gradient-pink-start),var(--gradient-pink-end))}
+.art.a-router,.art.a-play,.art.a-tag{background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end))}
+.art.a-router .ic,.art.a-play .ic,.art.a-tag .ic{color:var(--text-on-gradient)}
+
+/* ============ Overlay/Scrim ============ */
+.curtain{background:var(--curtain);-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* ============ Dropdowns · Select Options (Web) + _Select/Option ============ */
+.pop{width:340px;padding:var(--space-sm) 0;gap:0;font:var(--t-body-l);background:var(--surface-default);border-radius:var(--radius-control);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),var(--elevation-2);top:calc(100% + var(--space-sm))}
+.pop.start{width:260px;padding:var(--space-sm) 0}
+.pop > div:not(.btns):not(.cartitem),.pop > .eyebrow,.pop > p,.pop > .btns,.pop > .btn1,.pop > .cartitem{margin-inline:var(--space-lg)}
+.pop > .btns,.pop > .btn1{margin-block:var(--space-sm) var(--space-md)}
+.pop .who{padding-block:var(--space-sm)}
+.pop .eyebrow{font:var(--t-label);color:var(--text-primary);padding-top:var(--space-sm)}
+.pop .hint{font:var(--t-body-m);color:var(--text-secondary)}
+.pop .who b{font:var(--t-subtitle)} .pop .who small{font:var(--t-body-s);color:var(--text-secondary)}
+.pop .who .avatar{display:none}
+.pop .list li+li{border-top:0}
+.pop .list a,.pop .list button{height:var(--option-h);padding:0 var(--space-lg);gap:var(--space-md);border-radius:0;font:var(--t-body-l);color:var(--text-primary);background:var(--surface-default)}
+.pop .list a:hover,.pop .list button:hover,.pop .list a:focus-visible,.pop .list button:focus-visible{background:var(--surface-muted)}
+.pop .list .ic{width:20px;height:20px;color:var(--icon-secondary)}
+/* _Select/Option · Selected: Body L at Bold + Check (Icon/Brand, 24) · no fill change */
+.pop.ctry button[aria-current="true"]{background:var(--surface-default);color:var(--text-primary);font-weight:700}
+.pop.ctry button[aria-current="true"]:hover{background:var(--surface-muted)}
+.pop.ctry button[aria-current="true"] .ic{width:24px;height:24px;color:var(--icon-brand)}
+/* _Select/Option divider: 1px Border/Default, inset 16 (Space/lg), not after the last option */
+.pop .list a,.pop .list button{position:relative}
+.pop .list li:not(:last-child) > a::after,.pop .list li:not(:last-child) > button::after{content:"";position:absolute;inset-inline:var(--space-lg);bottom:0;height:var(--stroke-default);background:var(--border-default)}
+.pop .list:first-child{margin-top:0}
+/* Buttons inside dropdowns */
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)}
+.btn1,.btn2{height:var(--btn-h-m);padding:0 var(--space-lg);border-radius:var(--radius-control);font:var(--t-button);gap:var(--space-sm)}
+.btn1{background:var(--action-primary);color:var(--text-on-brand)} .btn1:hover{background:var(--action-primary-hover);filter:none} .btn1:active{background:var(--action-primary-pressed)}
+.btn2{border:0;background:var(--action-secondary);color:var(--text-brand);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-brand)} .btn2:hover{background:var(--action-secondary-hover)}
+.cnt{font:var(--t-label);font-size:12px;background:var(--surface-muted);color:var(--text-primary);border-radius:var(--radius-pill);padding:0 var(--space-sm)}
+.legal{font:var(--t-caption);color:var(--text-tertiary);margin:var(--space-sm) var(--space-lg) var(--space-xs)}
+.cart-empty{font:var(--t-body-l);color:var(--text-secondary)}
+.cartitem{grid-template-columns:64px 1fr;gap:var(--space-md);padding-block:var(--space-sm)}
+.cartitem .th{width:64px;height:64px;border-radius:var(--radius-control);background:var(--surface-muted);color:var(--icon-default)}
+.cartitem .th .ic{width:24px;height:24px}
+
+/* ============ Search · Search Field + Chip + _Select/Option ============ */
+.search{background:var(--surface-default);border-top:var(--stroke-default) solid var(--border-default);box-shadow:var(--elevation-2)}
+.zh[data-state="sticky"] .search{background:var(--glass-panel)}
+.search-in{max-width:880px;padding:var(--space-xl) var(--mx) var(--space-2xl);gap:var(--space-xl)}
+.sfield{height:var(--search-h);padding:0 var(--space-lg);gap:var(--space-sm);background:var(--surface-muted);border:0;border-radius:var(--radius-control)}
+.sfield:focus-within{box-shadow:var(--focus-ring)}
+.sfield input:focus-visible{box-shadow:none;outline:none}  /* Search Field draws the ring on the field, not the input */
+.sfield input{font:var(--t-body-l);color:var(--text-primary)}
+.sfield input::placeholder{color:var(--text-secondary)}
+.sfield .ic{width:20px;height:20px;color:var(--icon-secondary)}
+.sfield .ib{width:var(--btn-h-s);height:var(--btn-h-s)}
+.sblock h3,.sres .grp-h{font:var(--t-subtitle);color:var(--text-primary);letter-spacing:0;margin-bottom:var(--space-md)}
+.chips{gap:var(--space-sm)}
+.chips a,.chips button{display:inline-flex;align-items:center;height:var(--chip-h-m);padding:0 var(--space-lg);border:0;border-radius:var(--radius-pill);font:var(--t-body-l);color:var(--text-primary);background:var(--surface-default);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-control)}
+.chips a:hover,.chips button:hover{background:var(--action-neutral-hover)}
+.sres{gap:var(--space-xl)}
+.sres a{height:var(--option-h);padding:0 var(--space-lg);gap:var(--space-md);border-radius:0;font:var(--t-body-l);color:var(--text-primary)}
+.sres a[aria-selected="true"],.sres a:hover{background:var(--surface-muted)}
+.sres a .path{font:var(--t-body-m);color:var(--text-secondary)}
+.sres mark{color:var(--text-brand);font-weight:700}
+.sempty{font:var(--t-body-l);color:var(--text-secondary)}
+
+/* ============ Toast (DS Toast) ============ */
+.toast .t{background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--radius-pill);padding:var(--space-md) var(--space-xl);font:var(--t-label);box-shadow:var(--elevation-3)}
+.toast .t small{font:var(--t-body-s);opacity:1;color:var(--text-inverse)}
+.toast .t a,.toast .t button{color:var(--text-inverse);font:var(--t-label);border:0;padding:0;text-decoration:underline;text-underline-offset:3px}
+
+/* ============ Page body (DS components) ============ */
+.v1p{display:none}
+.dsp{display:block;background:var(--surface-page);color:var(--text-primary)}
+.dsp section{padding-block:var(--spacing-64)}
+.dsp .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);height:var(--btn-h-l);padding:0 var(--space-lg);border-radius:var(--radius-control);font:var(--t-button);border:0;transition:background-color .15s}
+.dsp .btn.m{height:var(--btn-h-m)} .dsp .btn.s{height:var(--btn-h-s);padding:0 var(--space-md);gap:var(--space-xs);font:var(--t-label)}
+.dsp .btn.pri{background:var(--action-primary);color:var(--text-on-brand)} .dsp .btn.pri:hover{background:var(--action-primary-hover)} .dsp .btn.pri:active{background:var(--action-primary-pressed)}
+.dsp .btn.sec{background:var(--action-secondary);color:var(--text-brand);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-brand)} .dsp .btn.sec:hover{background:var(--action-secondary-hover)}
+.dsp .btn.ter{background:transparent;color:var(--text-primary)} .dsp .btn.ter:hover{background:var(--action-neutral-hover)}
+.dsp .link{font:var(--t-body-m);color:var(--text-link);text-decoration:underline;text-underline-offset:3px;border-radius:var(--radius-chip);padding:0 var(--space-xs)} .dsp .link:hover{color:var(--text-link-hover)}
+/* hero — background = DS Site Footer fill (brand gradient) */
+.dsp .hero{background:linear-gradient(90deg,#18101A 0%,#431D4F 50%,#2D1D60 60%,#432066 100%);color:var(--p-white);padding-block:96px}
+.dsp .hero .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:var(--spacing-48);align-items:center}
+.dsp .hero h1{font:var(--t-display-xl);color:var(--p-white)} [dir="rtl"] .dsp .hero h1{line-height:84px}
+.dsp .hero p{font:var(--t-body-l);color:var(--p-white);margin-top:var(--space-lg);max-width:46ch}
+.dsp .hero .acts{display:flex;gap:var(--space-md);margin-top:var(--space-2xl)}
+.dsp .hero .shape{aspect-ratio:1/2;width:220px;justify-self:center;border-radius:var(--radius-sheet);background:linear-gradient(160deg,var(--gradient-pink-start),var(--gradient-pink-end));box-shadow:var(--elevation-3)}
+/* Breadcrumb */
+.dsp .crumb{display:flex;gap:var(--space-sm);font:var(--t-body-m);color:var(--text-secondary);margin-bottom:var(--space-xl)}
+.dsp .crumb .sep{color:var(--text-tertiary)} .dsp .crumb b{font:var(--t-body-m);color:var(--text-primary)}
+/* Section Header */
+.dsp .sh{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-lg);margin-bottom:var(--space-xl)}
+.dsp .sh h2{font:var(--t-display);color:var(--text-primary)} .dsp .sh p{font:var(--t-body-m);color:var(--text-secondary);margin-top:var(--space-xs)}
+/* Chip group */
+.dsp .chipg{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-bottom:var(--space-xl)}
+.dsp .chip{display:inline-flex;align-items:center;height:var(--chip-h-m);padding:0 var(--space-lg);border-radius:var(--radius-pill);font:var(--t-body-l);color:var(--text-primary);background:var(--surface-default);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-control)}
+.dsp .chip:hover{background:var(--action-neutral-hover)}
+.dsp .chip[aria-pressed="true"]{box-shadow:inset 0 0 0 var(--stroke-emphasis) var(--border-brand)}
+/* Card */
+.dsp .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--layout-grid-gutter)}
+.dsp .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--layout-grid-gutter)}
+.dsp .card{border-radius:var(--radius-card);padding:var(--space-lg);display:grid;gap:var(--space-sm);align-content:start}
+.dsp .card.out{background:var(--surface-default);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default)}
+.dsp .card.fill{background:var(--surface-muted);padding:var(--space-xl)}
+.dsp .card .img{height:180px;border-radius:var(--radius-control);background:var(--surface-muted);display:grid;place-items:center;color:var(--icon-secondary);margin-bottom:var(--space-sm)}
+.dsp .card .img .ic{width:40px;height:40px}
+.dsp .card h3{font:var(--t-subtitle);color:var(--text-primary)} .dsp .card p{font:var(--t-body-m);color:var(--text-secondary)}
+.dsp .card .price{font:var(--t-h4);color:var(--text-primary)} .dsp .card .price small{font:var(--t-body-m);color:var(--text-secondary)}
+.dsp .card .lbl{font:var(--t-label);color:var(--text-brand)}
+.dsp .card .big{font:var(--t-h1);color:var(--text-primary)}
+.dsp .card .btn{justify-self:start;margin-top:var(--space-sm)}
+/* gradient banner — Gradient/Start → End + Text/On-Gradient */
+.dsp .band{background:linear-gradient(110deg,var(--gradient-start),var(--gradient-end));color:var(--text-on-gradient)}
+.dsp .band h2{font:var(--t-display-l);color:var(--text-on-gradient);max-width:18ch} .dsp .band p{font:var(--t-body-l);color:var(--text-on-gradient);margin-top:var(--space-md);max-width:52ch}
+.dsp .band .btn{margin-top:var(--space-xl)}
+/* Inline Alert */
+.dsp .alert{display:flex;gap:var(--space-md);align-items:center;margin-top:var(--space-xl);padding:var(--space-md) var(--space-lg);border-radius:var(--radius-control);font:var(--t-body-m);background:var(--status-info-surface);color:var(--status-info-text);box-shadow:inset 0 0 0 var(--stroke-default) var(--status-info-border)}
+/* photo section (sample imagery, for glass testing) */
+.dsp .photo{min-height:440px;display:grid;align-items:end;color:var(--p-white);background:radial-gradient(40% 60% at 25% 40%,#E9C9A8 0%,transparent 70%),radial-gradient(35% 55% at 70% 55%,#4E7C8A 0%,transparent 70%),radial-gradient(60% 80% at 50% 100%,#2B3A2A 0%,transparent 70%),linear-gradient(180deg,#9FB7C9,#D8C3A5)}
+.dsp .photo h2{font:var(--t-display-l);color:var(--p-white);padding-bottom:var(--spacing-48)}
+/* Accordion */
+.dsp .acc{max-width:720px}
+.dsp .acc details{border-bottom:var(--stroke-default) solid var(--border-default)}
+.dsp .acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:var(--space-lg);padding:var(--space-lg) 0;font:var(--t-h4);color:var(--text-primary)}
+.dsp .acc summary::-webkit-details-marker{display:none}
+.dsp .acc summary .ic{width:24px;height:24px;color:var(--icon-default);transition:transform .2s}
+.dsp .acc details[open] summary .ic{transform:rotate(180deg)}
+.dsp .acc details p{font:var(--t-body-l);color:var(--text-secondary);padding-bottom:var(--space-lg)}
+/* Site Footer (Type=Full · Layout=Desktop) */
+.dsp .foot{background:linear-gradient(90deg,#18101A 0%,#431D4F 50%,#2D1D60 60%,#432066 100%);color:var(--text-on-brand);padding:var(--spacing-64) 0 var(--space-2xl)}
+.dsp .foot .wrap{display:grid;gap:var(--spacing-40)}
+.dsp .foot .cols{display:flex;gap:var(--spacing-48);align-items:flex-start}
+.dsp .foot .flogo img{width:113px;height:auto;display:block}
+.dsp .foot .col{display:grid;gap:var(--space-md);align-content:start}
+.dsp .foot .col b{font:var(--t-subtitle)} .dsp .foot .col a{font:var(--t-body-m);color:var(--text-on-brand)} .dsp .foot .col a:hover{text-decoration:underline}
+.dsp .foot .track{display:flex;align-items:center;gap:var(--space-sm);height:44px;padding:0 var(--space-md);border-radius:var(--radius-chip);background:color-mix(in srgb,var(--p-white) 10%,transparent);font:var(--t-body-m);width:280px}
+.dsp .foot .track span{flex:1}
+.dsp .foot .track .ic{width:20px;height:20px}
+.dsp .foot .badges{display:flex;flex-wrap:wrap;gap:var(--space-sm);width:280px} .dsp .foot .badges img{width:130px;height:40px;display:block}
+.dsp .foot .socials{display:flex;gap:var(--space-lg)} .dsp .foot .socials img{height:28px;width:auto;display:block}
+.dsp .foot .div{height:1px;background:color-mix(in srgb,var(--p-white) 20%,transparent)}
+.dsp .foot .legal-row{display:flex;align-items:center;gap:var(--space-xl);font:var(--t-caption)}
+.dsp .foot .legal-row .sp{flex:1}
+.dsp .foot .legal-row a{font:var(--t-overline);letter-spacing:.02em;color:var(--text-on-brand)}
+[dir="rtl"] .dsp .foot .legal-row a{letter-spacing:0;font-size:12px}
+
+/* ============ Prototype chrome on desktop (not DS, not production) ============ */
+.demo{font:var(--t-body-m);width:360px}
+.demo .row>span{font:var(--t-body-m);color:var(--text-secondary)}
+.demo .sg button{font:var(--t-body-m);padding:9px 8px}
+.demo-tab{display:none}
+.demo-dock{display:flex}
+}
+
+/* =====================================================================================
+   TYPE SCALE STEP-UP (desktop) — every size is still a DS text style, one step larger.
+   ===================================================================================== */
+@media (min-width:1150px){
+/* context row: Body L */
+.zh-ctx{font:var(--t-body-l)}
+.zh-ctx a,.zh-ctx .cbtn,.zh-ctx .lang{font:var(--t-body-l)}
+.seg button{font:var(--t-button);padding:6px var(--space-lg)}
+/* main nav (Underline Tab): H4 */
+.zh-t{font:var(--t-h4)}
+/* header buttons: Button · Large (h48) */
+.qp,.acct,.acct.in{height:var(--btn-h-l)}
+.ib{width:var(--btn-h-l);height:var(--btn-h-l)}
+.badge{min-width:22px;height:22px;font:var(--t-label);line-height:22px}
+/* mega-menu */
+.grp h3,[dir="rtl"] .grp h3{font:var(--t-h4)}
+.grp.big a,[dir="rtl"] .grp.big a{font:var(--t-h1)}
+.grp.med a{font:var(--t-h3)}
+.feat .hint{font:var(--t-body-l)}
+/* offer card */
+.pf h4{font:var(--t-h3)} .pf p{font:var(--t-body-l)} .pf .dt{font:var(--t-body-m)} .pf .cta{font:var(--t-body-l)}
+.bdg,[dir="rtl"] .bdg{font:var(--t-subtitle)}
+/* dropdowns */
+.pop{width:360px}
+.pop .eyebrow{font:var(--t-subtitle)} .pop .hint{font:var(--t-body-l)}
+.pop .who b{font:var(--t-h4)} .pop .who small{font:var(--t-body-m)}
+.cnt{font:var(--t-label)}
+.legal{font:var(--t-body-s)}
+/* search group titles */
+.sblock h3,.sres .grp-h{font:var(--t-h4)}
+.sres a .path{font:var(--t-body-m)}
+}
+
+/* Dropdowns that end with a list: last option sits flush with the panel bottom and its
+   hover fill follows the panel's Radius/Control corners. */
+@media (min-width:1150px){
+.pop:has(> .list:last-child){padding-bottom:0}
+.pop > .list:last-child > li:last-child > a,
+.pop > .list:last-child > li:last-child > button{border-radius:0 0 var(--radius-control) var(--radius-control)}
+}
+
+/* Sticky header: no bottom border — signature line and hairline removed; Elevation/1 only. */
+@media (min-width:1150px){
+.zh-sig,.zh[data-state="sticky"] .zh-sig{display:none}
+.zh[data-state="sticky"] .zh-bar{box-shadow:var(--elevation-1)}
+}
+
+/* Underline Tab spans the full header height (64): hover fill and underline sit edge to edge of the bar. */
+@media (min-width:1150px){
+.zh-nav{align-self:stretch;display:flex}
+.zh-nav ul{height:100%;align-items:stretch}
+.zh-nav li{display:flex}
+.zh-t{height:100%}
+}
+
+/* =====================================================================================
+   DESKTOP MOTION — styles driven by the spring engine (see M in the script)
+   --p (0 → 1) is the continuous scroll progress set on #zh every frame while it moves.
+   Every visual end state is unchanged (DS tokens); only the in-between is new.
+   ===================================================================================== */
+@media (min-width:1150px){
+:root{--sh-a:.06} :root[data-theme="dark"]{--sh-a:.4}
+/* header morph: context row slides away, glass + elevation fade in, logo eases to its compact size */
+#zh,#zh[data-state="sticky"]{transition:none;transform:translateY(calc(var(--p,0) * -1 * var(--ctx-h)))}
+#zh .zh-ctx,#zh[data-state="sticky"] .zh-ctx{transition:none;visibility:visible;opacity:clamp(0, calc(1 - var(--p,0) * 1.8), 1)}
+#zh.ctx-off .zh-ctx{visibility:hidden}
+#zh .zh-bar,#zh[data-state="sticky"] .zh-bar,#zh.panel-open .zh-bar,#zh.panel-open[data-state="sticky"] .zh-bar{
+  transition:none;height:var(--bar-h);
+  background:color-mix(in srgb,var(--surface-default) calc(100% - 24% * var(--p,0)),transparent);
+  -webkit-backdrop-filter:saturate(calc(100% + 80% * var(--p,0))) blur(calc(20px * var(--p,0)));
+  backdrop-filter:saturate(calc(100% + 80% * var(--p,0))) blur(calc(20px * var(--p,0)));
+  box-shadow:0 1px 2px rgba(0,0,0,calc(var(--sh-a) * var(--p,0))),0 2px 6px rgba(0,0,0,calc(var(--sh-a) * var(--p,0)))}
+#zh .logo .logo-img,#zh[data-state="sticky"] .logo .logo-img{width:120px;transition:none;transform:scale(calc(1 - .058 * var(--p,0)));transform-origin:left center}  /* 120 → 113 (DS minimum) */
+[dir="rtl"] #zh .logo .logo-img{transform-origin:right center}
+#zh .zh-panels,#zh[data-state="sticky"] .zh-panels{transition:none;
+  background:color-mix(in srgb,var(--surface-default) calc(100% - 8% * var(--p,0)),transparent);
+  -webkit-backdrop-filter:saturate(calc(100% + 80% * var(--p,0))) blur(calc(24px * var(--p,0)));
+  backdrop-filter:saturate(calc(100% + 80% * var(--p,0))) blur(calc(24px * var(--p,0)))}
+#zh .zh-panels{transition:box-shadow .3s cubic-bezier(.16,1,.3,1)}
+/* one mega-menu container: panels are cross-faded by the engine, never by CSS */
+#zh .mm,#zh .mm.on{transition:none}
+#zh .mm.leaving{position:absolute;top:0;inset-inline:0;visibility:visible;opacity:1;pointer-events:none}
+#zh .mm.on .mcol{animation:none}
+/* sliding indicators replace per-item hover fill / underline (same DS tokens) */
+#zh .zh-nav{position:relative}
+#zh .zh-nav ul{position:relative;z-index:1}
+#zh .zh-t:hover,#zh .zh-t[aria-expanded="true"]:hover{background:transparent}
+#zh .zh-t::after{display:none}
+.nav-hl{position:absolute;top:0;bottom:0;left:0;width:0;background:var(--action-neutral-hover);opacity:0;pointer-events:none;transition:opacity .22s cubic-bezier(.16,1,.3,1);will-change:transform,width}
+.nav-ul{position:absolute;bottom:0;left:0;width:0;height:var(--stroke-emphasis);background:var(--border-brand);opacity:0;pointer-events:none;z-index:2;transition:opacity .2s cubic-bezier(.16,1,.3,1);will-change:transform,width}
+/* backdrop, dropdowns, search: same easing family */
+#curtain{transition:opacity .36s cubic-bezier(.16,1,.3,1),visibility 0s linear .36s}
+#curtain.on{transition:opacity .32s cubic-bezier(.16,1,.3,1),visibility 0s}
+.pop{transform:translateY(-6px) scale(.97);transition:opacity .18s cubic-bezier(.16,1,.3,1),transform .34s cubic-bezier(.34,1.25,.64,1),visibility 0s linear .34s}
+.pop.on{transform:none;transition:opacity .22s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.34,1.25,.64,1),visibility 0s}
+#zh .search{transform:translateY(-8px);transition:opacity .2s cubic-bezier(.16,1,.3,1),transform .42s cubic-bezier(.16,1,.3,1),visibility 0s linear .42s}
+#zh .search.on{transform:none;transition:opacity .24s cubic-bezier(.16,1,.3,1),transform .46s cubic-bezier(.16,1,.3,1),visibility 0s}
+}
+@media (min-width:1150px) and (prefers-reduced-motion:reduce){
+.nav-hl,.nav-ul,#curtain,#curtain.on,.pop,.pop.on,#zh .search,#zh .search.on{transition:none!important}
+.pop,#zh .search{transform:none}
+}
+
+/* =====================================================================================
+   GLASS ONLY WHILE NOTHING IS OPEN
+   --o eases 0 → 1 while a mega-menu (or search) is open; the glass amount is
+   --gp = --p × (1 − --o), so the bar and panel turn solid Surface/Default while the user
+   is in the menu and become glass again after it closes. The scroll morph (context row,
+   logo, elevation) is unaffected.
+   ===================================================================================== */
+@property --o{syntax:'<number>';inherits:true;initial-value:0}
+@media (min-width:1150px){
+#zh{--o:0;--gp:calc(var(--p,0) * (1 - var(--o)));transition:--o .24s cubic-bezier(.16,1,.3,1)}
+#zh.panel-open,#zh.search-open{--o:1}
+#zh .zh-bar,#zh[data-state="sticky"] .zh-bar,#zh.panel-open .zh-bar,#zh.panel-open[data-state="sticky"] .zh-bar{
+  background:color-mix(in srgb,var(--surface-default) calc(100% - 24% * var(--gp)),transparent);
+  -webkit-backdrop-filter:saturate(calc(100% + 80% * var(--gp))) blur(calc(20px * var(--gp)));
+  backdrop-filter:saturate(calc(100% + 80% * var(--gp))) blur(calc(20px * var(--gp)))}
+#zh .zh-panels,#zh[data-state="sticky"] .zh-panels{
+  background:color-mix(in srgb,var(--surface-default) calc(100% - 8% * var(--gp)),transparent);
+  -webkit-backdrop-filter:saturate(calc(100% + 80% * var(--gp))) blur(calc(24px * var(--gp)));
+  backdrop-filter:saturate(calc(100% + 80% * var(--gp))) blur(calc(24px * var(--gp)))}
+#zh .search,#zh[data-state="sticky"] .search{background:var(--surface-default);-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@media (min-width:1150px) and (prefers-reduced-motion:reduce){#zh{transition:none}}
+
+/* Header actions grouped: icons (Search · Cart) then buttons (Quick Pay · Log in).
+   Gap inside a group = Space/sm (8); between groups = Space/xl (24). */
+@media (min-width:1150px){
+.zh-act{gap:var(--space-sm)}
+.zh-act > .qp{margin-inline-start:var(--space-lg)}
+}
+
+/* Logo keeps its full size (120px) in every scroll state — no scale-down while scrolling. */
+@media (min-width:1150px){
+#zh .logo .logo-img,#zh[data-state="sticky"] .logo .logo-img{width:120px;transform:none}
+}
+
+/* Header is solid while the pointer is over it (or keyboard focus is inside it);
+   glass returns when the pointer leaves. Uses the same eased --o cross-fade (240ms). */
+@media (min-width:1150px){
+#zh:hover,#zh:has(:focus-visible){--o:1}
+}
+
+/* Direct nav links (Support): hover matches the category tabs — Text/Primary + sliding Border/Brand underline. */
+@media (min-width:1150px){
+#zh .zh-nav a.zh-t:hover{color:var(--text-primary)}
+}
+
+/* Framer-like hover: highlight opacity/scale are spring-driven by the engine (no CSS cut);
+   label colour cross-fades instead of switching. */
+@media (min-width:1150px){
+.nav-hl{transition:none;transform-origin:center}
+#zh .zh-t{transition:color .28s cubic-bezier(.16,1,.3,1),background-color .28s cubic-bezier(.16,1,.3,1)}
+.nav-ul{transition:opacity .3s cubic-bezier(.16,1,.3,1)}
+}
+
+/* FIX: the glass ↔ solid cross-fade must also run in the sticky (scrolled) state.
+   Previously "#zh[data-state=sticky]{transition:none}" out-ranked it, so hover snapped to solid. */
+@media (min-width:1150px){
+#zh,#zh[data-state],#zh[data-state="sticky"],#zh[data-state="top"]{transition:--o .36s cubic-bezier(.16,1,.3,1)}
+}
+@media (min-width:1150px) and (prefers-reduced-motion:reduce){#zh,#zh[data-state],#zh[data-state="sticky"]{transition:none}}
+
+/* =====================================================================================
+   PAGE BODY (desktop) — background artwork only, swaps with the theme
+   ===================================================================================== */
+@media (min-width:1150px){
+.bgpage{min-height:200vh;background:var(--surface-page) url("assets/bg/bg-light.png") top center / 100% auto no-repeat}
+:root[data-theme="dark"] .bgpage{background-image:url("assets/bg/bg-dark.png")}
+}
+
+/* =====================================================================================
+   LIQUID GLASS (desktop sticky bar) — per the user's reference video
+   Clearer tint (Surface/Default ~42%), lighter blur, stronger saturation, a bright
+   specular rim (inset highlights) and a soft lift shadow. Still driven by --gp, so it
+   cross-fades to solid Surface/Default on hover / menu open as before.
+   EXCEPTION: no DS glass token; built from Surface/Default + Grey-0 highlights.
+   ===================================================================================== */
+@media (min-width:1150px){
+:root{--lg-tint:58%;--lg-blur:12px;--lg-sat:90%;--lg-bright:4%;--lg-rim:.85;--lg-rim2:.35;--lg-sh:.08}
+:root[data-theme="dark"]{--lg-tint:62%;--lg-blur:14px;--lg-sat:60%;--lg-bright:-6%;--lg-rim:.22;--lg-rim2:.06;--lg-sh:.45}
+#zh .zh-bar,#zh[data-state="sticky"] .zh-bar,#zh.panel-open .zh-bar,#zh.panel-open[data-state="sticky"] .zh-bar{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,calc(.22 * var(--lg-rim) * var(--gp))) 0%,rgba(255,255,255,0) 55%),
+    color-mix(in srgb,var(--surface-default) calc(100% - var(--lg-tint) * var(--gp)),transparent);
+  -webkit-backdrop-filter:blur(calc(var(--lg-blur) * var(--gp))) saturate(calc(100% + var(--lg-sat) * var(--gp))) brightness(calc(100% + var(--lg-bright) * var(--gp)));
+  backdrop-filter:blur(calc(var(--lg-blur) * var(--gp))) saturate(calc(100% + var(--lg-sat) * var(--gp))) brightness(calc(100% + var(--lg-bright) * var(--gp)));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,calc(var(--lg-rim) * var(--gp))),
+    inset 0 -1px 0 rgba(255,255,255,calc(var(--lg-rim2) * var(--gp))),
+    inset 0 -10px 18px -12px rgba(255,255,255,calc(var(--lg-rim) * .6 * var(--gp))),
+    0 8px 24px rgba(0,0,0,calc(var(--lg-sh) * var(--p,0))),
+    0 1px 2px rgba(0,0,0,calc(var(--lg-sh) * .6 * var(--p,0)))}
+}
+
+/* =====================================================================================
+   FLOATING PILL (desktop) — as the page scrolls (--p 0 → 1) the full-width bar morphs
+   into a floating liquid-glass pill: insets from the edges, drops 12px (Space/md) from
+   the top, corners round to a full pill. The mega-menu / search open as a rounded card
+   under the pill. At p = 0 everything is exactly the full-width header.
+   --pm = pill gap from the viewport edge (wide screens: pill hugs the 1360 content).
+   --pp = pill inner padding, so nav content barely moves.
+   ===================================================================================== */
+@media (min-width:1150px){
+#zh{--pm:max(8px, var(--mx) - 24px, (100vw - var(--layout-content-max)) / 2 - 24px);--pp:max(20px, var(--mx) - var(--pm))}
+#zh .zh-bar,#zh[data-state="sticky"] .zh-bar,#zh.panel-open .zh-bar,#zh.panel-open[data-state="sticky"] .zh-bar{
+  margin-inline:calc(var(--p,0) * var(--pm));
+  margin-top:calc(var(--p,0) * var(--space-md));
+  border-radius:calc(var(--p,0) * var(--bar-h) / 2);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,calc(var(--lg-rim2) * var(--gp))),
+    inset 0 1px 0 rgba(255,255,255,calc(var(--lg-rim) * var(--gp))),
+    inset 0 -10px 18px -12px rgba(255,255,255,calc(var(--lg-rim) * .6 * var(--gp))),
+    0 0 0 1px rgba(0,0,0,calc(var(--lg-sh) * .5 * var(--p,0) * var(--o))),
+    0 10px 30px rgba(0,0,0,calc(var(--lg-sh) * 1.4 * var(--p,0))),
+    0 2px 6px rgba(0,0,0,calc(var(--lg-sh) * .8 * var(--p,0)))}
+#zh .zh-in{padding-inline:calc(var(--mx) - var(--p,0) * (var(--mx) - var(--pp)))}
+/* nav hover highlight + underline sit inside the pill — sharp edges (no radius), per review */
+#zh .nav-hl{top:calc(var(--p,0) * 8px);bottom:calc(var(--p,0) * 8px);border-radius:0}
+#zh .nav-ul{bottom:calc(var(--p,0) * 8px)}
+/* mega-menu and search: rounded card under the pill */
+#zh .zh-panels,#zh[data-state="sticky"] .zh-panels{
+  inset-inline:calc(var(--p,0) * var(--pm));top:calc(100% + var(--p,0) * var(--space-sm));
+  border-radius:calc(var(--p,0) * var(--radius-sheet))}
+#zh .search,#zh[data-state="sticky"] .search{
+  margin-inline:calc(var(--p,0) * var(--pm));margin-top:calc(var(--p,0) * var(--space-sm));
+  border-radius:calc(var(--p,0) * var(--radius-sheet));overflow:hidden}
+}
+
+/* =====================================================================================
+   SMOOTH FLOAT (desktop) — replaces the layout-animated pill above.
+   Only cheap properties move per frame:
+   • the whole header translates (GPU transform) up by the context row and down by 12px;
+   • the glass surface is a ::before layer whose insets + radius change (absolute box,
+     no reflow of the nav content); content padding is static, so labels never shift.
+   --p is now driven by a spring toward 0 or 1 (see M.scroll), not by scroll position.
+   ===================================================================================== */
+@media (min-width:1150px){
+#zh,#zh[data-state="sticky"]{transform:translate3d(0,calc(var(--p,0) * (var(--space-md) - var(--ctx-h))),0)}
+#zh .zh-bar,#zh[data-state="sticky"] .zh-bar,#zh.panel-open .zh-bar,#zh.panel-open[data-state="sticky"] .zh-bar{
+  margin:0;border-radius:0;background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+#zh .zh-bar::before{content:"";position:absolute;top:0;bottom:0;inset-inline:calc(var(--p,0) * var(--pm));
+  border-radius:calc(var(--p,0) * var(--bar-h) / 2);pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,calc(.22 * var(--lg-rim) * var(--gp))) 0%,rgba(255,255,255,0) 55%),
+    color-mix(in srgb,var(--surface-default) calc(100% - var(--lg-tint) * var(--gp)),transparent);
+  -webkit-backdrop-filter:blur(calc(var(--lg-blur) * var(--gp))) saturate(calc(100% + var(--lg-sat) * var(--gp))) brightness(calc(100% + var(--lg-bright) * var(--gp)));
+  backdrop-filter:blur(calc(var(--lg-blur) * var(--gp))) saturate(calc(100% + var(--lg-sat) * var(--gp))) brightness(calc(100% + var(--lg-bright) * var(--gp)));
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,calc(var(--lg-rim2) * var(--gp))),
+    inset 0 1px 0 rgba(255,255,255,calc(var(--lg-rim) * var(--gp))),
+    inset 0 -10px 18px -12px rgba(255,255,255,calc(var(--lg-rim) * .6 * var(--gp))),
+    0 0 0 1px rgba(0,0,0,calc(var(--lg-sh) * .5 * var(--p,0) * var(--o))),
+    0 10px 30px rgba(0,0,0,calc(var(--lg-sh) * 1.4 * var(--p,0))),
+    0 2px 6px rgba(0,0,0,calc(var(--lg-sh) * .8 * var(--p,0)))}
+#zh .zh-in{position:relative;--zp:max(var(--mx), var(--pm) + 20px);padding-inline:var(--zp);max-width:calc(var(--layout-content-max) + 2 * var(--zp))}
+#zh .zh-panels,#zh[data-state="sticky"] .zh-panels{top:calc(100% + var(--p,0) * var(--space-sm))}
+}
+
+/* =====================================================================================
+   TRANSPARENT AT TOP (desktop) — at the top of the page the whole header (context row +
+   bar) is transparent over the page artwork; when scrolled it floats as the glass pill.
+   Fill amount --a = max(--p, --o): 0 at top, 1 when floating, and 1 on hover / menu open
+   (so hovering or opening a menu still turns it solid, as agreed).
+   The artwork is pulled up under the header so it shows through.
+   ===================================================================================== */
+@media (min-width:1150px){
+#zh{--a:max(var(--p,0), var(--o))}
+#zh .zh-bar::before{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,calc(.22 * var(--lg-rim) * var(--gp))) 0%,rgba(255,255,255,0) 55%),
+    color-mix(in srgb,var(--surface-default) calc((100% - var(--lg-tint) * var(--gp)) * var(--a)),transparent)}
+#zh .zh-ctx,#zh[data-state="sticky"] .zh-ctx{
+  background:color-mix(in srgb,var(--surface-default) calc(100% * var(--o)),transparent);
+  border-bottom-color:color-mix(in srgb,var(--border-default) calc(100% * var(--o)),transparent)}
+.bgpage{margin-top:calc(-1 * (var(--ctx-h) + var(--bar-h)))}
+}
+
+/* =====================================================================================
+   LIGHT GLASS TUNING — make the light pill read like the dark one: see-through body,
+   defined edge. White glass over a white page needs a darker edge to show its shape.
+   ===================================================================================== */
+@media (min-width:1150px){
+:root{--lg-tint:74%;--lg-blur:8px;--lg-sat:60%;--lg-bright:0%;--lg-rim:.95;--lg-rim2:.6;--lg-sh:.07;--lg-edge:.10;--lg-depth:.06}
+:root[data-theme="dark"]{--lg-edge:0;--lg-depth:0}
+#zh .zh-bar::before{
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,calc(var(--lg-edge) * var(--gp))),
+    inset 0 0 0 1px rgba(255,255,255,calc(var(--lg-rim2) * var(--gp))),
+    inset 0 1px 0 rgba(255,255,255,calc(var(--lg-rim) * var(--gp))),
+    inset 0 -1px 0 rgba(0,0,0,calc(var(--lg-depth) * var(--gp))),
+    inset 0 -10px 18px -12px rgba(255,255,255,calc(var(--lg-rim) * .6 * var(--gp))),
+    0 0 0 1px rgba(0,0,0,calc(var(--lg-sh) * .5 * var(--p,0) * var(--o))),
+    0 10px 30px rgba(0,0,0,calc(var(--lg-sh) * 1.4 * var(--p,0))),
+    0 2px 6px rgba(0,0,0,calc(var(--lg-sh) * .8 * var(--p,0)))}
+}
+
+/* =====================================================================================
+   COUNTRY DROPDOWN = DS "Select Options" · Platform=Web (545:1144) + "_Select/Option"
+   with Show Icon = Icon/Flags/* (as in the DS Nationality example 834:1488).
+   Panel: 200 wide (reduced from DS 361 per review) · pad 8/0 · Radius/Control · Surface/Default · 1px Border/Default · Elevation/2
+   Search: frame pad 4/8/8/8 · Search Field h56 · pad 0/16 · gap 8 (Space/sm) · Radius/Control ·
+           Surface/Muted · Icon/General/Search 24 · Body L hint in Text/Secondary
+   Option: h48 · pad 0/16 (Space/lg) · gap 12 (Space/md) · flag 24 · Body L Text/Primary
+           Selected = Bold + Check 24 (Icon/Brand) · Highlighted = Surface/Muted
+           Divider = 1px Border/Default at the TOP of the row, inset 16 (Show Divider; none on row 1)
+   ===================================================================================== */
+@media (min-width:1150px){
+.pop.ctry{width:200px;padding:0 0 var(--space-sm);overflow:hidden} /* no space above the first option (review); rows clip to the panel radius */
+.pop.ctry > div.sel-search:not(.btns){margin:0;padding:var(--space-xs) var(--space-sm) var(--space-sm)}
+.sel-sf{display:flex;align-items:center;height:56px;padding:0 var(--space-lg);gap:var(--space-sm);background:var(--surface-muted);border-radius:var(--radius-control);cursor:text}
+.sel-sf:focus-within{box-shadow:var(--focus-ring)}
+.sel-sf .ic{width:24px;height:24px;flex:none;color:var(--icon-default)}
+.sel-sf input{flex:1;min-width:0;height:100%;border:0;background:none;padding:0;font:var(--t-body-l);color:var(--text-primary);outline:none}
+.sel-sf input:focus-visible{box-shadow:none}
+.sel-sf input::placeholder{color:var(--text-secondary);opacity:1}
+.sel-sf input::-webkit-search-cancel-button{-webkit-appearance:none}
+.pop.ctry .list button{height:48px;padding:0 var(--space-lg);gap:var(--space-md);justify-content:flex-start;font:var(--t-body-l);color:var(--text-primary)}
+.pop.ctry .list .flag{width:24px;height:24px;flex:none;display:block}
+.pop.ctry .list .lbl{flex:1;min-width:0;text-align:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pop.ctry .list button[aria-current="true"]{font-weight:700}
+.pop.ctry .list button[aria-current="true"] .ic{width:24px;height:24px;flex:none;color:var(--icon-brand)}
+.pop.ctry .list li > button::after{display:none}
+.pop.ctry .list li:not([hidden]) ~ li:not([hidden]) > button::before{content:"";position:absolute;inset-inline:var(--space-lg);top:0;height:var(--stroke-default);background:var(--border-default)}
+.pop.ctry .sel-empty{margin:0;padding:var(--space-md) var(--space-lg);font:var(--t-body-l);color:var(--text-secondary)}
+}
+
+/* =====================================================================================
+   FIGMA GLASS (desktop floating pill) — PlayGround 319:24590 "Glass" effect.
+   Two layers behind the nav content:
+   ::before = solid Surface/Default (top-of-page hover / menu open) + drop shadow
+   ::after  = the glass: --lg-fill (Figma 2026-11-09: dark = black 30%, light = white 30%), refraction + dispersion filter (#zglass),
+              light −45° rim at intensity .8; shown at opacity --gp (cross-fades with solid).
+   ===================================================================================== */
+@media (min-width:1150px){
+.zh-probe{position:absolute;left:0;top:0;height:0;width:calc(100% - 2 * var(--pm));visibility:hidden;pointer-events:none}
+#zh .zh-in{z-index:1}
+#zh .zh-bar::before{
+  background:color-mix(in srgb,var(--surface-default) calc(100% * var(--a) * (1 - var(--gp))),transparent);
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,calc(var(--lg-sh) * .5 * var(--p,0) * var(--o))),
+    0 10px 30px rgba(0,0,0,calc(var(--lg-sh) * 1.4 * var(--p,0))),
+    0 2px 6px rgba(0,0,0,calc(var(--lg-sh) * .8 * var(--p,0)))}
+#zh .zh-bar::after{content:"";position:absolute;top:0;bottom:0;inset-inline:calc(var(--p,0) * var(--pm));z-index:0;
+  border-radius:calc(var(--p,0) * var(--bar-h) / 2);pointer-events:none;opacity:var(--gp);
+  background:var(--lg-fill);
+  -webkit-backdrop-filter:blur(4px) saturate(140%);backdrop-filter:blur(4px) saturate(140%);
+  box-shadow:
+    0 0 0 .5px rgba(0,0,0,var(--lg-edge)),
+    inset 1px 1px 0 rgba(255,255,255,calc(.8 * var(--lg-lit))),
+    inset -1px -1px 0 rgba(255,255,255,calc(.45 * var(--lg-lit))),
+    inset 8px 8px 16px -12px rgba(255,255,255,calc(.5 * var(--lg-lit))),
+    inset -8px -8px 16px -12px rgba(255,255,255,calc(.3 * var(--lg-lit)))}
+:root.lg-svg #zh .zh-bar::after{-webkit-backdrop-filter:url(#zglass);backdrop-filter:url(#zglass)}
+:root{--lg-lit:1;--lg-edge:.10;--lg-fill:rgba(255,255,255,.30)} :root[data-theme="dark"]{--lg-lit:.8;--lg-edge:0;--lg-fill:rgba(0,0,0,.30)}
+}
+
+/* Firefox / Safari glass: mirrored artwork + lens filter on an element (filter:url() is cross-browser) */
+@media (min-width:1150px){
+.zh-glass{display:none}
+:root.lg-mirror #zh .zh-glass{display:block;position:absolute;top:0;bottom:0;inset-inline:calc(var(--p,0) * var(--pm));z-index:0;
+  border-radius:calc(var(--p,0) * var(--bar-h) / 2);overflow:hidden;opacity:var(--gp);pointer-events:none;isolation:isolate}
+:root.lg-mirror #zh .zh-glass-f{position:absolute;inset:0;filter:url(#zglass)}
+:root.lg-mirror #zh .zh-glass-bg{position:absolute;left:0;top:0;will-change:transform;
+  background:var(--surface-page) url("assets/bg/bg-light.png") top center / 100% auto no-repeat}
+:root.lg-mirror[data-theme="dark"] #zh .zh-glass-bg{background-image:url("assets/bg/bg-dark.png")}
+:root.lg-mirror #zh .zh-bar::after{-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+/* Safari glass: canvas-computed lens (same layer box as the Firefox path) */
+@media (min-width:1150px){
+:root.lg-canvas #zh .zh-glass{display:block;position:absolute;top:0;bottom:0;inset-inline:calc(var(--p,0) * var(--pm));z-index:0;
+  border-radius:calc(var(--p,0) * var(--bar-h) / 2);overflow:hidden;opacity:var(--gp);pointer-events:none;-webkit-mask-image:-webkit-radial-gradient(white,black)}
+:root.lg-canvas #zh .zh-glass-c{position:absolute;inset:0;width:100%;height:100%;display:block}
+:root.lg-canvas #zh .zh-bar::after{-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+
+/* =====================================================================================
+   FAST + SMOOTH FLOAT — the heavy glass layer no longer changes size during the morph.
+   It sits at the final pill geometry and only fades/scales in (opacity + transform =
+   compositor-only), so the refraction filter / canvas never re-renders at odd sizes.
+   Only the light solid layer (::before) morphs its shape.
+   ===================================================================================== */
+@media (min-width:1150px){
+#zh .zh-bar::after,
+:root.lg-mirror #zh .zh-glass,
+:root.lg-canvas #zh .zh-glass{inset-inline:var(--pm);border-radius:calc(var(--bar-h) / 2);
+  transform:scale(calc(.97 + .03 * var(--gp)));transform-origin:50% 50%;will-change:opacity,transform}
+}
+
+/* =====================================================================================
+   FAST HOVER CROSS-FADE (glass ↔ solid) — 160ms in / 220ms out, ease-out.
+   The solid layer no longer re-colours per frame: it is plain Surface/Default and only its
+   OPACITY changes (compositor-only), like the glass layer. Same --a / --gp logic as before.
+   ===================================================================================== */
+@media (min-width:1150px){
+#zh,#zh[data-state],#zh[data-state="sticky"],#zh[data-state="top"]{transition:--o .22s cubic-bezier(.2,.8,.2,1)}
+#zh:hover,#zh:has(:focus-visible),#zh.panel-open,#zh.search-open{transition:--o .16s cubic-bezier(.2,.8,.2,1)}
+#zh .zh-bar::before{background:var(--surface-default);opacity:calc(var(--a) * (1 - var(--gp)));will-change:opacity}
+/* the solid layer now fades with opacity, so the glass layer carries the same lift shadow */
+#zh .zh-bar::after{box-shadow:
+    0 0 0 .5px rgba(0,0,0,var(--lg-edge)),
+    0 10px 30px rgba(0,0,0,calc(var(--lg-sh) * 1.4)),
+    0 2px 6px rgba(0,0,0,calc(var(--lg-sh) * .8)),
+    inset 1px 1px 0 rgba(255,255,255,calc(.8 * var(--lg-lit))),
+    inset -1px -1px 0 rgba(255,255,255,calc(.45 * var(--lg-lit))),
+    inset 8px 8px 16px -12px rgba(255,255,255,calc(.5 * var(--lg-lit))),
+    inset -8px -8px 16px -12px rgba(255,255,255,calc(.3 * var(--lg-lit)))}
+}
+@media (min-width:1150px) and (prefers-reduced-motion:reduce){#zh,#zh:hover{transition:none}}
+
+/* ── context row: breathing room above Personal/Business (review) ──
+   Row grows 40 → 48 (Spacing/48); the extra 8 (Space/sm) goes on top only. */
+@media (min-width:1150px){
+  /* equal top/bottom: 8 + Tab Group 40 + 8 (+1px divider) */
+  :root{--ctx-h:calc(var(--spacing-40) + 2 * var(--space-sm) + var(--stroke-default))}
+  .zh-ctx{padding-block:var(--space-sm)}
+}
+
+/* ── Quick Pay + Log in / account: pill shape (review) ── */
+@media (min-width:1150px){
+  .qp,.acct,.acct.in{border-radius:var(--radius-pill)}
+}
+
+/* ── Pill edge gap = button's vertical gap (review) ──
+   --pg = (Bar 64 − Button/L 48) / 2 = 8. The pill edge sits exactly --pg outside the content box,
+   so Log in's end gap = its top/bottom gap, and the logo's start gap matches it. Content doesn't move. */
+@media (min-width:1150px){
+  #zh{--pg:calc((var(--bar-h) - var(--btn-h-l)) / 2);
+      --pm:max(8px, var(--mx) - var(--pg), (100vw - var(--layout-content-max)) / 2 - var(--pg))}
+  #zh .zh-in{--zp:max(var(--mx), var(--pm) + var(--pg))}
+}
+
+/* ── Logo side reverted (review): pill START edge back to the original 24px from the content
+   (--pms = the pre-change --pm); END edge keeps the 8px gap (= Log in's top/bottom gap).
+   Content doesn't move; only the pill's start edge shifts outward. RTL-safe (logical insets). ── */
+@media (min-width:1150px){
+  #zh{--pms:max(8px, var(--mx) - 24px, (100vw - var(--layout-content-max)) / 2 - 24px)}
+  #zh .zh-bar::before{inset-inline-start:calc(var(--p,0) * var(--pms));inset-inline-end:calc(var(--p,0) * var(--pm))}
+  #zh .zh-bar::after,
+  :root.lg-mirror #zh .zh-glass,
+  :root.lg-canvas #zh .zh-glass{inset-inline-start:var(--pms);inset-inline-end:var(--pm)}
+  .zh-probe{width:calc(100% - var(--pms) - var(--pm))}
+  #zh .zh-panels,#zh[data-state="sticky"] .zh-panels{inset-inline-start:calc(var(--p,0) * var(--pms));inset-inline-end:calc(var(--p,0) * var(--pm))}
+  #zh .search,#zh[data-state="sticky"] .search{margin-inline-start:calc(var(--p,0) * var(--pms));margin-inline-end:calc(var(--p,0) * var(--pm))}
+}
+
+/* ── Personal/Business: sliding thumb v2 (spring, Framer layoutId-style) ──
+   Pill sits ABOVE the base labels and carries its own white copy of them, clipped to its shape,
+   so the label colour switches exactly at the pill edge while it moves. */
+.seg.has-thumb{position:relative;isolation:isolate}
+.seg.has-thumb button,.seg.has-thumb button[aria-pressed="true"],:root[data-theme="dark"] .seg.has-thumb button[aria-pressed="true"]{
+  position:relative;z-index:1;background:transparent;color:var(--text-primary);transition:none} /* no bg fade: a fresh render must never flash a second pill */
+.seg.has-thumb button:hover,.seg.has-thumb button:active{background:transparent} /* no hover fill on the unselected option (review) */
+.seg.has-thumb button[aria-pressed="true"]:hover{background:transparent}
+.seg-thumb{position:absolute;left:0;z-index:2;overflow:hidden;border-radius:var(--radius-pill);background:var(--action-primary);
+  pointer-events:none;will-change:transform,width;contain:layout paint}
+.seg-thumb-in{position:absolute;left:0;will-change:transform}
+.seg-cl{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap;color:var(--text-on-brand)}
+.seg.has-thumb button:focus-visible{z-index:3}
+
+/* ── Country dropdown: stands out from the header in both themes (review) ──
+   Dark mode can't separate layers with shadow alone (dark-on-dark), so the panel is RAISED one
+   surface step (lighter = closer, the standard dark-elevation rule), gets a crisp 1px rim + top
+   highlight, and a deeper shadow. Light keeps white but gets a firmer Elevation/3. */
+@media (min-width:1150px){
+  .pop.ctry{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),var(--elevation-3)}
+  :root[data-theme="dark"] .pop.ctry{
+    background:var(--surface-muted);                                   /* grey-700: one step above the header's grey-800 */
+    box-shadow:inset 0 0 0 var(--stroke-default) var(--p-grey-600),     /* rim */
+               inset 0 1px 0 rgba(255,255,255,.06),                     /* top light edge */
+               0 2px 6px rgba(0,0,0,.45),0 16px 40px rgba(0,0,0,.6)}    /* lift */
+  :root[data-theme="dark"] .pop.ctry .list li:not([hidden]) ~ li:not([hidden]) > button::before{background:var(--p-grey-600)}
+  :root[data-theme="dark"] .pop.ctry .list button:hover,
+  :root[data-theme="dark"] .pop.ctry .list button:focus-visible{background:var(--p-grey-600)}
+}
+
+/* ── Select-field chevron flips up while its list is open (review) — spring-ish ease ── */
+.zh-ctx .cbtn[data-pop] > :last-child{transition:transform .32s cubic-bezier(.34,1.3,.64,1)}
+.zh-ctx .cbtn[data-pop][aria-expanded="true"] > :last-child{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){.zh-ctx .cbtn[data-pop] > :last-child{transition:none}}
+
+/* =====================================================================================
+   SMOOTH HOVER (glass → solid), Framer-style — fixes from the 2:09 PM recording:
+   1. No double edge: the glass layer no longer shrinks when it fades (its 97→100% scale is
+      tied to the scroll float --p only, never to hover).
+   2. No see-through dip: the SOLID layer now sits ABOVE the glass and simply fades in over it
+      (opacity --o). Glass stays fully on underneath, so every in-between frame is a clean
+      blend of the two (solid·o + glass·(1−o)) instead of two half-transparent layers.
+   3. Softer timing: 0.30s in / 0.38s out on an ease-out-quint curve.
+   ===================================================================================== */
+@media (min-width:1150px){
+#zh,#zh[data-state],#zh[data-state="sticky"],#zh[data-state="top"]{transition:--o .38s cubic-bezier(.22,1,.36,1)}
+#zh:hover,#zh:has(:focus-visible),#zh.panel-open,#zh.search-open{transition:--o .3s cubic-bezier(.22,1,.36,1)}
+#zh .zh-in{z-index:2}
+#zh .zh-bar::before{z-index:1;opacity:var(--o)}
+#zh .zh-bar::after,
+:root.lg-mirror #zh .zh-glass,
+:root.lg-canvas #zh .zh-glass{opacity:var(--p,0);transform:scale(calc(.97 + .03 * var(--p,0)))}
+}
+
+/* ── Dark pill rim softer (review): light-edge strength .8 → .3 ── */
+@media (min-width:1150px){ :root[data-theme="dark"]{--lg-lit:.3} }
+
+/* ── Nav hover highlight: SHARP, full bar height, identical in every state (review) ──
+   Same look as the full-width header hover (no radius, top→bottom of the bar), also when the
+   header floats as a pill. The brand underline sits on the bar's bottom edge in both states. */
+@media (min-width:1150px){
+  #zh .nav-hl{top:0;bottom:0;border-radius:0}
+  #zh .nav-ul{bottom:0}
+}
+
+/* ── Mega-menu link descriptions (MOCK copy) — one line of Body M / Text Secondary under the title ── */
+.ds-desc{display:none}
+@media (min-width:1150px){
+  .grp a.has-desc,[dir="rtl"] .grp a.has-desc{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-xs);background:none}
+  .grp a.has-desc .t{background:linear-gradient(var(--text-link-hover),var(--text-link-hover)) no-repeat 0 100%/0 1px;transition:background-size .3s cubic-bezier(.16,1,.3,1)}
+  [dir="rtl"] .grp a.has-desc .t{background-position:100% 100%}
+  .grp a.has-desc:hover .t,.grp a.has-desc:focus-visible .t{background-size:100% 1px}
+  .ds-desc{display:block;font:var(--t-body-m);color:var(--text-secondary);letter-spacing:0}
+  .grp.big li:has(.has-desc)+li{margin-top:var(--space-lg)}
+}
+
+/* ── Mega-menu heading icons (DS Line icons) — 24px, Icon/Default, Space/sm gap, centred on the heading ── */
+.h-ic{display:none}
+@media (min-width:1150px){
+  .grp h3:has(.h-ic){display:flex;align-items:center;gap:var(--space-sm)}
+  .grp h3 .h-ic{display:block;width:20px;height:20px;flex:none;color:var(--icon-default)}  /* 24 → 20 (review) */
+}
+
+/* ── Mega-menu link hover: pink text only, no underline (review) · descriptions one size up ── */
+@media (min-width:1150px){
+  .grp a,.grp a.has-desc .t,[dir="rtl"] .grp a,[dir="rtl"] .grp a.has-desc .t{background-image:none;transition:color .18s cubic-bezier(.16,1,.3,1)}
+  .grp a:hover,.grp a:focus-visible,.grp a.has-desc:hover .t,.grp a.has-desc:focus-visible .t{color:var(--text-brand)}
+  .ds-desc{font:var(--t-body-l)}
+}
+
+/* ── Mega-menu link arrows: small nudge on hover (review) ──
+   → (goes to another category) slides forward; ↗ (external) lifts up-and-out. Spring-like ease. */
+@media (min-width:1150px){
+  .grp .xa{display:inline-block;transition:transform .32s cubic-bezier(.34,1.56,.64,1),color .18s cubic-bezier(.16,1,.3,1)}
+  .grp a:hover .xa,.grp a:focus-visible .xa{color:var(--text-brand)}
+  .grp a:hover .xa-go,.grp a:focus-visible .xa-go{transform:translateX(4px)}
+  .grp a:hover .xa-ext,.grp a:focus-visible .xa-ext{transform:translate(3px,-3px)}
+}
+@media (prefers-reduced-motion:reduce){ .grp .xa{transition:color .18s} .grp a:hover .xa{transform:none} }
+
+/* ── Guest persona: two stacked offers (CVM content) using the standard offer card (compact) ── */
+@media (min-width:1150px){ .feat.gbs{display:grid;gap:var(--space-lg);align-content:start} }
+
+/* offer cards: no badge row when empty (MOCK badge removed per review) */
+.pf .bdgs:empty{display:none}
+
+/* offer card type (review), DS text styles exactly:
+   title  = English|Arabic/H1  (Zain Bold 28/34)
+   line   = English|Arabic/H4  (Zain Bold 18/24) in Text/Secondary. Body L (16/24) is the largest REGULAR
+            style in the DS, so the next step up is H4. */
+@media (min-width:1150px){ .pf h4{font:var(--t-h1)} .pf p{font:var(--t-h4);color:var(--text-secondary)} }
+
+/* offer card link: no underline (review); colour change on hover stays */
+.pf .cta{text-decoration:none}
+
+/* ── Plan links: plan TYPE as a small label above, plan NAME as the title (review) ──
+   type = DS Label (Bold 14/20) · Text/Secondary · name = H1 (unchanged) · description = Body L (unchanged) */
+.ds-type{display:none}
+@media (min-width:1150px){
+  /* plan type = badge right after the plan name (same line). DS 2.0 has no Badge component, so it is
+     built from tokens: Surface/Muted pill · Label (Bold 14/20) · Text/Secondary · pad 2/8 · Radius/Pill */
+  .ds-row{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-sm)}
+  .ds-type{display:inline-flex;align-items:center;padding:2px var(--space-sm);border-radius:var(--radius-pill);
+    background:var(--surface-muted);font:var(--t-label);color:var(--text-secondary);white-space:nowrap}
+}
+
+/* "by Zain" one step down from the plan name (review): H1 28 → H3 20 */
+@media (min-width:1150px){ .grp a.has-desc .t-by{font:var(--t-h3)} }
+
+/* plan link hover: the whole item turns pink — name, type badge text and description (review) */
+@media (min-width:1150px){
+  .grp a.has-desc .ds-type,.grp a.has-desc .ds-desc{transition:color .18s cubic-bezier(.16,1,.3,1)}
+  .grp a.has-desc:hover .ds-type,.grp a.has-desc:focus-visible .ds-type,
+  .grp a.has-desc:hover .ds-desc,.grp a.has-desc:focus-visible .ds-desc{color:var(--text-brand)}
+}
+
+/* plan list: a little tighter between items (review): Space/lg 16 → Space/sm 8 */
+@media (min-width:1150px){ .grp.big li:has(.has-desc)+li{margin-top:var(--space-sm)} }
+
+/* compact offer cards a bit shorter to lower the mega-menu height (review):
+   image strip 96 → 72 · link sits right under the text (no extra 8) · stacked gap 16 → 12 */
+@media (min-width:1150px){
+  .pf.compact .art{height:72px}
+  .pf.compact .cta{margin-top:0}
+  .feat.gbs{gap:var(--space-md)}
+}
+
+/* bundle offer cards (plan + device): benefits with check icons + monthly price (review) */
+.pf .ben,.pf .pr{display:none}
+@media (min-width:1150px){
+  .pf.has-ben p{display:none}
+  .pf .ben{display:grid;gap:var(--space-xs);list-style:none;margin:var(--space-xs) 0 0;padding:0}
+  .pf .ben li{display:flex;align-items:center;gap:var(--space-sm);font:var(--t-body-m);color:var(--text-secondary)}
+  .pf .ben .ic{width:16px;height:16px;flex:none;color:var(--icon-brand)}
+  .pf .pr{display:flex;align-items:baseline;gap:var(--space-xs);margin-top:var(--space-sm)}
+  .pf .pr b{font:var(--t-h3);color:var(--text-primary)}
+  .pf .pr span{font:var(--t-body-m);color:var(--text-secondary)}
+  .pf.has-ben h4{font:var(--t-h3)}
+}
+@media (min-width:1150px){
+  .pf .pr-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-md);margin-top:var(--space-sm)}
+  .pf .pr-row .pr{margin-top:0}
+}
+
+/* offer-card images → neutral image placeholder until real CVM / product imagery arrives (review, desktop) */
+@media (min-width:1150px){
+  .pf .art.ph{background:var(--surface-muted);background-image:none}
+  .pf .art.ph .ic{width:32px;height:32px;color:var(--icon-secondary)}
+}
+
+/* Plan Card (Figma PlayGround 346:30467) in DS tokens — Internet guest bundles (review).
+   Accent bar: Figma #0455A4 → nearest DS primitive --p-blue-700. */
+.plc{display:none}
+@media (min-width:1150px){
+  .feat.gbs:has(.plc){align-content:start}
+  .plc{display:flex;flex-direction:column;gap:var(--space-md);padding:var(--space-lg);border-radius:var(--radius-card);
+    background:var(--surface-default);color:var(--text-primary);text-decoration:none;
+    box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),-4px 0 0 var(--p-blue-700);
+    transition:box-shadow .18s cubic-bezier(.16,1,.3,1)}
+  [dir="rtl"] .plc{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),4px 0 0 var(--p-blue-700)}
+  .plc:hover,.plc:focus-visible{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-strong),-4px 0 0 var(--p-blue-700),var(--elevation-2)}
+  [dir="rtl"] .plc:hover,[dir="rtl"] .plc:focus-visible{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-strong),4px 0 0 var(--p-blue-700),var(--elevation-2)}
+  .plc-hd{display:flex;align-items:flex-start;gap:var(--space-sm)}
+  .plc-l{display:flex;flex-direction:column;gap:var(--space-xs);flex:1 1 0;min-width:0}
+  .plc-n{font:var(--t-h4);color:var(--text-primary);transition:color .18s cubic-bezier(.16,1,.3,1)}
+  .plc:hover .plc-n,.plc:focus-visible .plc-n{color:var(--text-brand)}
+  .plc-d{font:var(--t-body-m);color:var(--text-secondary)}
+  .plc-r{display:flex;flex-direction:column;gap:2px;flex:none;white-space:nowrap;text-align:end}
+  .plc-f{font:var(--t-caption);color:var(--text-secondary)}
+  .plc-p{font:var(--t-h4);color:var(--text-primary)}
+  .plc-ft{display:flex;flex-direction:column;gap:var(--space-xs)}
+  .plc-inc{font:var(--t-caption);color:var(--text-tertiary)}
+  .plc-dev{display:flex;align-items:center;gap:var(--space-sm);font:var(--t-label);color:var(--text-primary)}
+  .plc-ic{display:grid;place-items:center;width:30px;height:30px;border-radius:var(--radius-pill);background:var(--surface-muted);flex:none}
+  .plc-ic .ic{width:16px;height:16px;color:var(--icon-default)}
+}
+/* plan card accent bar: blue → DS brand pink (review) */
+@media (min-width:1150px){
+  .plc{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),-4px 0 0 var(--border-brand)}
+  [dir="rtl"] .plc{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),4px 0 0 var(--border-brand)}
+  .plc:hover,.plc:focus-visible{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-strong),-4px 0 0 var(--border-brand),var(--elevation-2)}
+  [dir="rtl"] .plc:hover,[dir="rtl"] .plc:focus-visible{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-strong),4px 0 0 var(--border-brand),var(--elevation-2)}
+}
+/* plan card price block: left-aligned as in Figma (items-start), label sits tight on the price (review) */
+@media (min-width:1150px){
+  .plc-r{align-items:flex-start;text-align:start;gap:0}
+}
+/* plan card: description Body M → Body L, "Device included" Caption → Body M (review) */
+@media (min-width:1150px){
+  .plc-d{font:var(--t-body-l)}
+  .plc-inc{font:var(--t-body-m)}
+}
+/* plan card heading: H4 (18/24) → H3 (20/26), next step on the DS typescale (review) */
+@media (min-width:1150px){ .plc-n{font:var(--t-h3)} }
+/* "Best sellers" heading above the plan cards — same heading style as the menu columns (review) */
+@media (min-width:1150px){ .feat-hd h3{margin-bottom:0} }
+/* "Switch to Zain" full-width band at the bottom of the Mobile mega-menu — Guest only (review). DS tokens only. */
+.mm-sw{display:none}
+@media (min-width:1150px){
+  .mm-sw{display:block;background:var(--surface-subtle);box-shadow:inset 0 var(--stroke-default) 0 var(--border-default)}
+  /* dark: plain DS surface-subtle (custom muted override removed so the Web Step track stays visible) */
+  .mm-sw-in{max-width:calc(var(--layout-content-max) + 2 * var(--mx));padding:var(--space-xl) var(--mx);margin-inline:auto;
+    display:flex;align-items:center;gap:var(--space-lg)}
+  .sw-ic{display:grid;place-items:center;width:var(--btn-h-l);height:var(--btn-h-l);border-radius:var(--radius-pill);background:var(--action-secondary);flex:none}
+  .sw-ic .ic{width:24px;height:24px;color:var(--icon-brand)}
+  .sw-tx{display:flex;flex-direction:column;gap:var(--space-xs);min-width:0}
+  .sw-h{font:var(--t-h4);color:var(--text-primary);margin:0}
+  .sw-b{font:var(--t-body-m);color:var(--text-secondary);margin:0}
+  .sw-steps{display:flex;align-items:center;gap:var(--space-xl);list-style:none;margin:0 0 0 auto;padding:0}
+  [dir="rtl"] .sw-steps{margin:0 auto 0 0}
+  .sw-steps li{display:flex;align-items:center;gap:var(--space-sm);font:var(--t-body-m);color:var(--text-primary);white-space:nowrap}
+  .sw-n{display:grid;place-items:center;width:24px;height:24px;border-radius:var(--radius-pill);background:var(--surface-default);
+    box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default);font:var(--t-label);color:var(--text-primary)}
+  .sw-cta{display:inline-flex;align-items:center;gap:var(--space-sm);height:var(--btn-h-l);padding:0 var(--space-xl);border-radius:var(--radius-pill);
+    background:var(--action-primary);color:var(--text-on-brand);font:var(--t-button);text-decoration:none;flex:none;transition:background-color .15s}
+  .sw-cta:hover{background:var(--action-primary-hover)} .sw-cta:active{background:var(--action-primary-pressed)}
+  .sw-cta .ic{width:20px;height:20px;transition:transform .2s cubic-bezier(.16,1,.3,1)}
+  .sw-cta:hover .ic{transform:translateX(3px)} [dir="rtl"] .sw-cta:hover .ic{transform:translateX(-3px)}
+}
+/* Switch band rebuilt from DS 2.0 components (review):
+   · Steps = Web Step, Status=Upcoming, Indicator=Number — 32px circle, Surface/Default fill, Border/Control 1.5 stroke,
+     number in Label / Text-Primary, label under it in Caption / Text-Secondary, 2px Border/Default track between steps.
+   · CTA = Button, Variant=Primary, Size=Large — 48 high, Space/lg padding, Space/sm gap, Radius/Control, Button type, 20px trailing icon. */
+@media (min-width:1150px){
+  .sw-steps{gap:0;align-items:flex-start}
+  .sw-steps .ws{display:flex;align-items:flex-start}
+  .ws-line{display:flex;align-items:center;width:var(--spacing-64);height:32px}
+  .ws-line::before{content:"";flex:1;height:var(--stroke-emphasis);background:var(--border-default)}
+  .ws-step{display:flex;flex-direction:column;align-items:center;gap:var(--space-xs)}
+  .ws-c{display:grid;place-items:center;width:32px;height:32px;border-radius:var(--radius-pill);background:var(--surface-default);
+    box-shadow:inset 0 0 0 1.5px var(--border-control);font:var(--t-label);color:var(--text-primary)}
+  .ws-l{font:var(--t-caption);color:var(--text-secondary);white-space:nowrap}
+  .sw-cta{padding:0 var(--space-lg);border-radius:var(--radius-control)}
+}
+/* Web Step fix (review): as in the DS component, the step column is the 32px circle only and the label overflows
+   centred under it, so the 128px track (DS Line frame) runs edge-to-edge into each circle. Outer labels get room via margin. */
+@media (min-width:1150px){
+  .ws-step{width:32px}
+  .ws-l{width:max-content;text-align:center}
+  .ws-line{width:128px}
+  .sw-steps{margin-inline:auto var(--space-2xl);padding-inline:var(--space-2xl)}
+}
+@media (min-width:1150px){ .sw-steps li.ws{gap:0} }
+/* Web Step labels: Caption (12/16) → Body M (14/21), next DS step (review) */
+@media (min-width:1150px){ .ws-l{font:var(--t-body-m)} }
+/* Switch band description: Body M (14/21) → Body L (16/24), next DS step (review) */
+@media (min-width:1150px){ .sw-b{font:var(--t-body-l)} }
+/* Switch band heading: H4 (18/24) → H3 (20/26), next DS step (review) */
+@media (min-width:1150px){ .sw-h{font:var(--t-h3)} }
+/* Figma banner artwork in the offer-card image strip (416×72 artboards, exported @3x): shown whole at the
+   artboard ratio so nothing is cropped (review) */
+@media (min-width:1150px){
+  .pf .art.bnr,.pf.compact .art.bnr{height:auto;aspect-ratio:416/72;background:none;overflow:hidden;display:block}
+  .pf .art.bnr img{display:block;width:100%;height:100%;object-fit:cover}
+}
+/* offer-card title: H1 (28/34) → H2 (24/30), one DS step down (review) */
+@media (min-width:1150px){ .pf h4{font:var(--t-h2)} }
+/* Switch band: heading ↔ description gap Space/xs (4) → 0, the remaining space is the DS line-heights (review) */
+@media (min-width:1150px){ .sw-tx{gap:0} }
+/* Switch band artwork (Figma PlayGround 349:30776, SVG) replaces the SIM icon badge (review) */
+@media (min-width:1150px){
+  .sw-art{display:block;height:var(--spacing-64);width:auto;flex:none;border-radius:var(--radius-control)}
+}
+/* awards artwork: black BG removed; light / dark variants so text + divider stay legible on each theme (review) */
+@media (min-width:1150px){
+  .sw-art{border-radius:0}
+  .sw-dk{display:none}
+  :root[data-theme="dark"] .sw-lt{display:none} :root[data-theme="dark"] .sw-dk{display:block}
+}
+@media (min-width:1150px) and (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .sw-lt{display:none} :root:not([data-theme="light"]) .sw-dk{display:block}
+}
+/* awards artwork, inline + animated (review): one SVG for both themes, colours from DS tokens */
+@media (min-width:1150px){
+  .aw-host{display:block;height:var(--spacing-64);aspect-ratio:528/174;flex:none}
+  .aw-host img,.aw-host svg{display:block;width:100%;height:100%;overflow:visible}
+  .aw .aw-w{fill:var(--text-secondary)}
+  .aw .aw-div{fill:var(--border-strong)}
+  .aw .aw-w,.aw .aw-div,.aw .aw-tr{transform-box:fill-box}
+  .aw .aw-w{transform-origin:50% 100%} .aw .aw-div{transform-origin:50% 0} .aw .aw-tr{transform-origin:50% 100%}
+}
+/* Streaming platforms: brand logo tile before each OTT link (logos from Figma PlayGround 346:30130) (review) */
+.ott{display:none}
+@media (min-width:1150px){
+  .grp a.has-ott{display:flex;align-items:center;gap:var(--space-md)}
+  .ott{display:block;flex:none;width:56px;height:32px;border-radius:var(--radius-chip);overflow:hidden;
+    box-shadow:inset 0 0 0 var(--stroke-hairline) var(--border-default)}
+  .ott img{display:block;width:100%;height:100%;object-fit:cover}
+}
+/* two-column link groups: the 4px item gap moves from margin to row-gap so both columns start level (review)
+   OTT tiles: logo scaled up inside the tile so it reads at this size */
+@media (min-width:1150px){
+  .grp.med ul{row-gap:var(--space-xs)} .grp.med li+li{margin-top:0}
+  .ott img{transform:scale(1.5)}
+}
+/* OTT logos without their banner background (review): bare logo, a bit bigger, in a fixed 72×32 slot so names line up.
+   White marks are currentColor → text-primary, so they read on light and dark. */
+@media (min-width:1150px){
+  .ott{width:72px;height:32px;border-radius:0;overflow:visible;box-shadow:none;display:flex;align-items:center;justify-content:flex-start;color:var(--text-primary)}
+  [dir="rtl"] .ott{justify-content:flex-end}
+  .ott svg,.ott img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;transform:none;object-fit:contain}
+}
+/* Starzplay's light gradient wordmark is built for dark grounds → single-colour (text-primary) in light mode */
+@media (min-width:1150px){
+  :root[data-theme="light"] .o-starzplay path{fill:currentColor}
+}
+@media (min-width:1150px) and (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .o-starzplay path{fill:currentColor}
+}
+/* OTT logos, organised (review): one fixed 72×28 slot, logo centred and capped at 24px tall so the marks carry
+   similar visual weight; names line up in a clean column. */
+@media (min-width:1150px){
+  .ott{width:72px;height:28px;justify-content:center}
+  [dir="rtl"] .ott{justify-content:center}
+  .ott svg,.ott img{max-height:24px}
+  .grp a.has-ott{gap:var(--space-lg)}
+}
+/* every logo row uses the same type (H4 18/24) whichever column it sits in (review) */
+@media (min-width:1150px){ .grp a.has-ott,.grp.med a.has-ott{font:var(--t-h4)} }
+/* offer cards: full-width grey divider above the CTA, equal space above and below the CTA (review).
+   The CTA row spans the card edge to edge (cancels the body padding), divider = Border/Default 1px,
+   CTA padding-top = card bottom padding = Space/lg (16). */
+@media (min-width:1150px){
+  .pf .cta,.pf.compact .cta{display:flex;margin:var(--space-sm) calc(-1 * var(--space-lg)) 0;padding:var(--space-lg) var(--space-lg) 0;
+    border-top:var(--stroke-default) solid var(--border-default)}
+}
+/* CTA row: Space/lg (16) → Space/md (12) above and below, one DS step down (review) */
+@media (min-width:1150px){
+  .pf .cta,.pf.compact .cta{padding-top:var(--space-md)}
+  .pf .bd{padding-bottom:var(--space-md)}
+}
+/* Max band: no steps, so the CTA is pushed to the end (review) */
+@media (min-width:1150px){ .mm-max .sw-cta{margin-inline-start:auto} .mm-max .sw-tx{max-width:720px} }
+/* Max band: inline OTT logo stack (Figma 357:31178) in the sentence; rings take the band colour so the overlap reads
+   on light and dark; each circle springs in (review) */
+@media (min-width:1150px){
+  .mx-stack{display:inline-block;vertical-align:middle;margin-block:-4px;line-height:0}
+  .mx-stack svg{display:block;height:30px;width:auto;overflow:visible}
+  .ms .ms-ring{stroke:var(--surface-subtle)}
+  .ms .ms-c{transform-box:fill-box;transform-origin:50% 50%}
+}
+/* offer cards with a price (review): price + "/month" and a free-months badge on one line, above the CTA divider.
+   Price = H3, unit = Body M secondary; badge = pill in Action/Secondary with Text/Brand, Label type. */
+.pr-line,.free{display:none}
+@media (min-width:1150px){
+  .pf .pr-line{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-xs)}
+  .pf .pr-line .pr{display:flex;align-items:baseline;gap:var(--space-xs);margin:0}
+  .pf .pr-line .pr b{font:var(--t-h3);color:var(--text-primary)}
+  .pf .pr-line .pr span{font:var(--t-body-m);color:var(--text-secondary)}
+  .pf .free{display:inline-flex;align-items:center;padding:2px var(--space-sm);border-radius:var(--radius-pill);
+    background:var(--action-secondary);color:var(--text-brand);font:var(--t-label)}
+}
+
+/* free-months badge: DS pink primitives (Action/Secondary is transparent) — pink-50 on light, pink-900 on dark */
+@media (min-width:1150px){
+  .pf .free{background:var(--p-pink-50)}
+  :root[data-theme="dark"] .pf .free{background:var(--p-pink-900);color:var(--p-pink-50)}
+}
+/* free-months badge sits next to the offer title (review) */
+.ttl-row{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-sm)}
+.ttl-row h4{margin:0}
+/* Gift cards: full catalogue in two columns, same link style as the other side columns (review) */
+@media (min-width:1150px){
+  .grp.two ul{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(var(--rows,6),auto);column-gap:var(--space-2xl);row-gap:var(--space-xs)}
+  .grp.two li+li{margin-top:0}
+}
+
+/* Offers login band: Lottie gift box replaces the star badge (no circle, 64 = --spacing-64) */
+@media (min-width:1150px){
+  .mm-login .sw-lottie{display:block;flex:none;width:var(--spacing-64);height:var(--spacing-64)}
+  .mm-login .sw-lottie{overflow:visible;transform:scale(1.4)}
+  .mm-login .sw-lottie svg{display:block}   /* the Lottie canvas has wide padding: scale so the box reads at icon size; sparkles stay clear of the heading */
+}
+
+/* Offer cards: image placeholder uses the banner ratio (416/72) so a placeholder card lines up with a banner card */
+@media (min-width:1150px){ .pf .art.ph,.pf.compact .art.ph{height:auto;aspect-ratio:416/72} }
+
+/* Account menu: number switch, DS-aligned (audit 2026-11-12)
+   Trigger = Chip Size=Small (569:46): 32 · pad 0/12 (Space/md) · Radius/Pill · Surface/Default · 1px Border/Control · Body M Text/Primary
+             Hover = Action/Neutral/Hover · Focus = focus ring · open = Selected look (2px Border/Brand)
+             EXCEPTION: trailing 16 Chevron Down (DS Chip has no icon slot)
+   Menu    = Select Options Web (545:1144): Surface/Default · 1px Border/Default · Radius/Control · Elevation/2 · pad 8/0
+   Option  = _Select/Option (545:81): h48 · pad 0/16 · gap 12 · icon 24 · Body L · Selected = Bold + Check 24 Icon/Brand ·
+             Highlighted = Surface/Muted · divider 1px Border/Default at the top, inset 16, none on the first row */
+@media (min-width:1150px){
+  .pop .who{position:relative}
+  .pop .ln-sw{margin-inline-start:auto}
+  .pop .ln-btn{display:inline-flex;align-items:center;gap:var(--space-xs);height:var(--chip-h-s);padding:0 var(--space-md);border:0;border-radius:var(--radius-pill);background:var(--surface-default);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-control);font:var(--t-body-m);color:var(--text-primary);cursor:pointer;white-space:nowrap}
+  .pop .ln-btn:hover{background:var(--action-neutral-hover)}
+  .pop .ln-btn:focus-visible{box-shadow:inset 0 0 0 var(--stroke-default) var(--border-control),var(--focus-ring);outline:none}
+  .pop .ln-btn[aria-expanded="true"]{box-shadow:inset 0 0 0 var(--stroke-emphasis) var(--border-brand);font-weight:700}
+  .pop .ln-btn .ic{width:16px;height:16px;color:var(--icon-secondary);transition:transform .2s}
+  .pop .ln-btn[aria-expanded="true"] .ic{transform:rotate(180deg)}
+  .pop .ln-pop{position:absolute;inset-inline:calc(-1 * var(--space-sm));top:calc(100% + var(--space-xs));z-index:3;display:block;padding:var(--space-sm) 0;background:var(--surface-default);border-radius:var(--radius-control);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default),var(--elevation-2);overflow:hidden}
+  .pop .ln-pop[hidden]{display:none}
+  .pop .ln-list{margin:0}
+  .pop .ln-list button{display:flex;align-items:center;justify-content:flex-start;gap:var(--space-md);height:var(--option-h);padding:0 var(--space-lg);font:var(--t-body-l);color:var(--text-primary);background:var(--surface-default)}
+  .pop .ln-list button:hover,.pop .ln-list button:focus-visible{background:var(--surface-muted)}
+  .pop .ln-list li:not(:last-child) > button::after{content:none}
+  .pop .ln-list li + li > button::before{content:"";position:absolute;inset-inline:var(--space-lg);top:0;height:var(--stroke-default);background:var(--border-default)}
+  .pop .ln-list button .ic{width:24px;height:24px;flex:none;color:var(--icon-secondary)}
+  .pop .ln-lbl{flex:1;text-align:start}
+  .pop .ln-list button[aria-current="true"]{font-weight:700}
+  .pop .ln-list button[aria-current="true"] > .ic:last-child{color:var(--icon-brand)}
+}
+
+/* Account menu: avatar circle with the customer's initials, next to name + active line */
+@media (min-width:1150px){
+  .pop .who{gap:var(--space-md)}
+  .pop .who .avatar{display:grid;place-items:center;width:var(--spacing-40);height:var(--spacing-40);border-radius:var(--radius-pill);background:var(--action-primary);color:var(--text-on-brand);font:var(--t-label);flex:none}
+}
+
+/* Account menu: customer name one step up, H4 → H3 (review) */
+@media (min-width:1150px){ .pop .who b{font:var(--t-h3)} }
+
+/* Account menu avatar one step up: 40 → 48 (--spacing-48), initials Label → Subtitle (review) */
+@media (min-width:1150px){ .pop .who .avatar{width:var(--spacing-48);height:var(--spacing-48);font:var(--t-subtitle);font-weight:700} }
+
+/* Account menu: divider under the name row (Border/Default, 1px, full width) */
+@media (min-width:1150px){ .pop .who-div{border:0;height:var(--stroke-default);background:var(--border-default);margin:var(--space-sm) 0} }
+
+/* Account menu: no extra space under the name-row divider (review) */
+@media (min-width:1150px){ .pop .who-div{margin-bottom:0} .pop .who-div + .list{margin-top:0;padding-top:0} }
+/* Header dropdowns float the same gap below the header as the mega-menu panel (sticky: +Space/sm, like .zh-panels) */
+@media (min-width:1150px){ #zh .pop{top:calc(100% + var(--space-sm) + var(--p,0) * var(--space-sm))} }
+
+/* Account menu: icons lead the label (left in English, right in Arabic via logical order); counts stay at the end */
+@media (min-width:1150px){
+  #pop-account .list:not(.ln-list) a,#pop-account .list:not(.ln-list) button{justify-content:flex-start}
+  #pop-account .list:not(.ln-list) .ic{order:-1;width:24px;height:24px}
+  #pop-account .list:not(.ln-list) .cnt{margin-inline-start:auto}
+}
+
+/* Guest account menu: "New Customer" one step up, Subtitle → H4 (review) */
+@media (min-width:1150px){ .pop .eyebrow{font:var(--t-h4)} }
+
+/* Account menu: line type moved under the number chip (review) · Caption, Text/Secondary */
+@media (min-width:1150px){
+  .pop .ln-sw{display:flex;flex-direction:column;align-items:center;gap:var(--space-xs)}
+  .pop .ln-type{font:var(--t-caption);color:var(--text-secondary)}
+}
+
+/* No white band above the first / below the last option (same as the country dropdown, review): rows clip to the radius */
+@media (min-width:1150px){
+  .pop .ln-pop{padding:0;overflow:hidden}
+  #pop-account{padding-bottom:0}   /* no overflow clip: the number list's shadow must not be cut */
+  #pop-account > .list:not(.ln-list) li:last-child > a,#pop-account > .list:not(.ln-list) li:last-child > button{border-radius:0 0 var(--radius-control) var(--radius-control)}
+}
+
+/* Number list: line type on a second line under the number (review). EXCEPTION: _Select/Option is single-line;
+   supporting line = Body M Text/Secondary, row grows from 48 with Space/sm top/bottom padding */
+@media (min-width:1150px){
+  .pop .ln-list button{height:auto;min-height:var(--option-h);padding-block:var(--space-sm)}
+  .pop .ln-lbl{display:grid;gap:0}
+  .pop .ln-lbl .ln-n{font:var(--t-body-l);color:var(--text-primary)}
+  .pop .ln-lbl .ln-t{font:var(--t-body-m);font-weight:400;color:var(--text-secondary)}
+  .pop .ln-list button[aria-current="true"] .ln-n{font-weight:700}
+}
+
+/* "Your lines" section (replaces the number dropdown, review) */
+@media (min-width:1150px){
+  #pop-account > div.ln-sec{margin-inline:0;padding-top:var(--space-sm)}
+  .pop .ln-sec .ln-hd{display:block;padding:var(--space-xs) var(--space-lg);font:var(--t-label);color:var(--text-secondary)}
+  .pop .ln-sec .ln-list{margin:0;position:static;box-shadow:none;padding:0}
+  .pop .ln-sec .ln-list button{display:grid;grid-template-columns:24px auto 1fr 24px;align-items:center;gap:var(--space-md);height:var(--option-h);min-height:0;padding:0 var(--space-lg);font:var(--t-body-l);color:var(--text-primary);background:transparent;border-radius:0}
+  .pop .ln-sec .ln-list{background:transparent}
+  .pop .ln-sec .ln-list button:hover,.pop .ln-sec .ln-list button:focus-visible{background:var(--surface-muted)}
+  .pop .ln-sec .ln-list li > button::before,.pop .ln-sec .ln-list li > button::after{content:none}
+  .pop .ln-sec .ln-list button .ic{width:24px;height:24px;color:var(--icon-secondary)}
+  .pop .ln-sec .ln-n{font:var(--t-body-l)}
+  .pop .ln-sec .ln-t{font:var(--t-body-m);color:var(--text-secondary);justify-self:end}
+  .pop .ln-sec .ln-list button[aria-current="true"] .ln-n{font-weight:700}
+  .pop .ln-sec .ln-list button[aria-current="true"] > .ic:last-child{color:var(--icon-brand)}
+  .pop .ln-sec + .who-div{margin-top:var(--space-sm)}
+}
+
+/* Your lines: line type stacked under the number (review) · Body M Text/Secondary · row grows from 48 with Space/sm padding */
+@media (min-width:1150px){
+  .pop .ln-sec .ln-list button{grid-template-columns:24px 1fr 24px;height:auto;min-height:var(--option-h);padding-block:var(--space-sm)}
+  .pop .ln-sec .ln-lbl{display:grid;gap:0;text-align:start}
+  .pop .ln-sec .ln-t{justify-self:start}
+}
+
+/* "Your lines" heading one step up: Label (14) → Subtitle (16/22) (review) */
+@media (min-width:1150px){ .pop .ln-sec .ln-hd{font:var(--t-subtitle)} }
+
+/* Your lines: no gap between the last line row and the divider below (review) */
+@media (min-width:1150px){ .pop .ln-sec + .who-div{margin-top:0} }
+
+/* Header account button: name + active line number stacked (review) · name = Button style, number = Caption Text/Secondary */
+@media (min-width:1150px){
+  .acct .acct-tx{display:grid;gap:0;text-align:start;line-height:1}
+  .acct .acct-nm{font:var(--t-button);color:var(--text-primary)}
+  .acct .acct-ln{font:var(--t-caption);color:var(--text-secondary);unicode-bidi:isolate}
+  [dir="rtl"] .acct .acct-ln{text-align:end}
+}
+
+/* Account menu narrower: 360 → 300 (review) */
+@media (min-width:1150px){ #pop-account{width:300px} }
+
+/* Header account button (logged in): initials avatar instead of the user icon, same as the account menu (review)
+   32 circle (= --btn-h-s) · Action/Primary · Text/On-Brand · Label */
+@media (min-width:1150px){
+  .acct .acct-av{display:grid;place-items:center;width:var(--btn-h-s);height:var(--btn-h-s);flex:none;border-radius:var(--radius-pill);background:var(--action-primary);color:var(--text-on-brand);font:var(--t-label)}
+}
+
+/* Offer cards in a row stretch to the same height: the extra space goes ABOVE the divider, so the CTA keeps
+   Space/md above and below and sits centred in its row (review). Min gap above the divider stays Space/sm. */
+@media (min-width:1150px){
+  .pf{display:flex;flex-direction:column}
+  .pf .bd{flex:1;display:flex;flex-direction:column}
+  .pf .bd > .cta{margin-top:auto}
+  .pf .bd > :has(+ .cta){margin-bottom:var(--space-xs)}
+}
+
+/* Offer cards with a price AND a validity date: the date sits next to the price on one line (review) */
+@media (min-width:1150px){
+  .pf .pr-line{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:var(--space-sm)}
+  .pf .pr-line .dt{font:var(--t-body-m);color:var(--text-secondary)}
+}
+
+/* Your lines (RTL): the LTR number hugs the line start like its type label, instead of stretching and aligning left */
+@media (min-width:1150px){ .pop .ln-lbl > *{justify-self:start} }
+
+/* Arabic: arrow hover nudges move the reading direction too (review) */
+@media (min-width:1150px) and (prefers-reduced-motion:no-preference){
+  [dir="rtl"] .grp a:hover .xa-go,[dir="rtl"] .grp a:focus-visible .xa-go{transform:translateX(-4px)}
+  [dir="rtl"] .grp a:hover .xa-ext,[dir="rtl"] .grp a:focus-visible .xa-ext{transform:translate(-3px,-3px)}
+  [dir="rtl"] .sw-cta:hover .ic.flip{transform:translateX(-3px) scaleX(-1)}   /* keep the mirrored arrow while it nudges */
+}
+
+/* "Verify now" badge on Update my Civil ID (desktop, review): same badge as the "free months" badge, trailing end of the row */
+@media (min-width:1150px){
+  #pop-account .vbdg{margin-inline-start:auto;display:inline-flex;align-items:center;padding:2px var(--space-sm);border-radius:var(--radius-pill);
+    background:var(--p-pink-50);color:var(--p-pink-700);font:var(--t-label);white-space:nowrap}
+  :root[data-theme="dark"] #pop-account .vbdg{background:var(--p-pink-900);color:var(--p-pink-50)}
+}
+
+/* My Wishlist count = the "Verify now" badge style (review): Label, pill, Pink/50 fill + Pink/700 text (dark: Pink/900 + Pink/50) */
+@media (min-width:1150px){
+  #pop-account .cnt{display:inline-flex;align-items:center;justify-content:center;min-width:24px;padding:2px var(--space-sm);border-radius:var(--radius-pill);
+    background:var(--p-pink-50);color:var(--p-pink-700);font:var(--t-label)}
+  :root[data-theme="dark"] #pop-account .cnt{background:var(--p-pink-900);color:var(--p-pink-50)}
+}
+/* Wishlist count: number centred on both axes (review) — fixed 24 × 24 circle, grid-centred, no line-height offset */
+@media (min-width:1150px){ #pop-account .cnt{display:grid;place-items:center;width:24px;min-width:24px;height:24px;padding:0;line-height:1;text-align:center;font-variant-numeric:tabular-nums} }
+/* Count badges: optical centring (review). Zain's digits sit ~1.2px above the line-box centre (big descender space),
+   so the text is nudged down by that amount: measured ink centre now within 0.2px of the circle centre */
+@media (min-width:1150px){ #pop-account .cnt{box-sizing:border-box;padding:2.4px 0 0} }
+
+/* Type audit (review): cart badge on the DS Label style exactly (14/20 bold); the 22px circle centres it instead of line-height */
+@media (min-width:1150px){ .badge{display:grid;place-items:center;font:var(--t-label);line-height:20px} }
+@media (min-width:1150px){ #pop-account .cnt{line-height:20px} }   /* Label 14/20 exactly; grid + 2.4px top pad keep the digit centred */
+
+/* Mega-menu content: equal space above and below (review), Space/2xl (32) both, with or without a band under it.
+   Was 32 above / 48 below. Same in every state (top / floating pill), EN and AR. */
+@media (min-width:1150px){ .mm-in,#zh .mm-in{padding-block:var(--space-2xl)} }
+
+/* No reflow during the full ↔ boxed morph (review: offer-card text jumped to a second line mid-animation).
+   The panel narrows by --pm on each side as --p goes 0 → 1; its inner padding shrinks by the same amount, so the
+   content width stays constant and nothing re-wraps (floor Space/lg). Same for the band under the menu. EN + AR. */
+@media (min-width:1150px){
+  #zh .mm-in{--mmp:calc(var(--mx) + (1 - var(--p,0)) * var(--pm));padding-inline:var(--mmp);max-width:calc(var(--layout-content-max) + 2 * var(--mmp))}
+  #zh .mm-sw-in{--mmp:calc(var(--mx) + (1 - var(--p,0)) * var(--pm));padding-inline:var(--mmp);max-width:calc(var(--layout-content-max) + 2 * var(--mmp))}
+}
+/* Exact no-reflow (review: Offers cards still re-wrapped by 1–2px). The panel's start edge moves by --pms and its end
+   edge by --pm, so the inner padding cancels each edge separately: content width stays exactly
+   100% − --pms − --pm − 2·--mx at every frame of the morph (boxed padding = --mx, as before). EN + AR (logical sides). */
+@media (min-width:1150px){
+  #zh .mm-in,#zh .mm-sw-in{
+    --mps:calc(var(--mx) + (1 - var(--p,0)) * var(--pms));--mpe:calc(var(--mx) + (1 - var(--p,0)) * var(--pm));
+    padding-inline-start:var(--mps);padding-inline-end:var(--mpe);max-width:calc(var(--layout-content-max) + var(--mps) + var(--mpe))}
+}
+
+/* =====================================================================================
+   SITE FOOTER · minimal (desktop). Light/dark come from the semantic tokens only.
+   Brand + 3 link columns + app QR card · divider · copyright, legal links, social icons.
+   ===================================================================================== */
+@media (min-width:1150px){
+.sft{background:var(--surface-subtle);box-shadow:inset 0 var(--stroke-default) 0 var(--border-default);color:var(--text-secondary)}
+.sft-in{max-width:calc(var(--layout-content-max) + 2 * var(--mx));padding:var(--spacing-64) var(--mx) var(--space-2xl);margin-inline:auto}
+.sft-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--layout-grid-gutter);align-items:start}
+.sft-logo{grid-column:span 2;justify-self:start;display:block;border-radius:var(--radius-selection)}
+.sft-logo img{display:block;width:120px;height:auto}
+.sft-logo .lw{display:none} :root[data-theme="dark"] .sft-logo .lk{display:none} :root[data-theme="dark"] .sft-logo .lw{display:block}
+.sft-cols{grid-column:span 7;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:var(--layout-grid-gutter)}
+.sft-col h3{font:var(--t-h4);color:var(--text-primary);margin-bottom:var(--space-lg)}
+.sft-col ul{display:grid;gap:var(--space-md)}
+.sft a{color:inherit;text-decoration:none;border-radius:var(--radius-selection)}
+.sft-col a,.sft-legal a{font:var(--t-body-l);color:var(--text-secondary);transition:color .15s}
+.sft-col a:hover,.sft-legal a:hover{color:var(--text-primary);text-decoration:none}
+.sft a:focus-visible{outline:var(--stroke-emphasis) solid var(--border-focus);outline-offset:2px}
+/* app card: QR tile stays white in dark mode so every scanner reads it */
+.sft-app{grid-column:span 3;display:flex;gap:var(--space-lg);align-items:center;padding:var(--space-lg);border-radius:var(--radius-card);background:var(--surface-default);box-shadow:inset 0 0 0 var(--stroke-default) var(--border-default)}
+.sft-qr{flex:none;display:block;padding:var(--space-sm);border-radius:var(--radius-control);background:var(--p-white)}
+.sft-qr img{display:block;width:88px;height:88px}
+.sft-app-t{display:grid;gap:var(--space-xs)}
+.sft-app-t b{font:var(--t-h3);color:var(--text-primary)}
+.sft-qr-hint{font:var(--t-body-l);line-height:22px;color:var(--text-secondary);text-wrap:pretty}
+.sft-stores{display:none}
+.sft-bot{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--space-xl);row-gap:var(--space-xs);align-items:center;margin-top:var(--spacing-48);padding-top:var(--space-xl);box-shadow:inset 0 var(--stroke-default) 0 var(--border-default)}
+.sft-copy{font:var(--t-body-l);color:var(--text-secondary)}
+.sft-legal{grid-column:1;grid-row:1;display:flex;flex-wrap:wrap;gap:var(--space-sm) var(--space-xl)}
+.sft-copy{grid-column:1;grid-row:2}
+.sft-legal a{font:var(--t-body-l)}
+.sft-social{grid-column:2;grid-row:1 / 3;display:grid;gap:var(--space-sm)}
+.sft-social h3{font:var(--t-h4);color:var(--text-primary);padding-inline-start:var(--space-sm)}   /* lines up with the first icon's glyph */
+.sft-soc{display:flex;gap:var(--space-sm)}
+.sft-soc a{display:grid;place-items:center;width:var(--btn-h-m);height:var(--btn-h-m);border-radius:var(--radius-control);color:var(--icon-default);transition:background-color .15s,color .15s}
+.sft-soc a:hover{background:var(--action-neutral-hover);color:var(--icon-brand)} .sft-soc a:active{background:var(--action-neutral-pressed);color:var(--icon-brand)}
+.sft-soc svg{display:block;width:24px;height:24px}
+}
+@media (min-width:1150px){ .sft .lg-short{display:none} }
